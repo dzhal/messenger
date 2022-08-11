@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel index.hbs",
+    "dev": "parcel index.hbs node src/server.js",
     "build": "parcel build index.hbs"
   },
   "repository": {
@@ -21,5 +21,8 @@
   "devDependencies": {
     "@anikin/parcel-transformer-handlebars": "^1.0.9",
     "parcel": "^2.7.0"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
   }
 }
