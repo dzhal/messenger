@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "parcel index.hbs",
+    "build": "parcel build index.hbs"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/dzhal/messenger/issues"
   },
-  "homepage": "https://github.com/dzhal/messenger#readme"
+  "homepage": "https://github.com/dzhal/messenger#readme",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "^1.0.9",
+    "parcel": "^2.7.0"
+  }
 }
