@@ -1,0 +1,26 @@
+.search_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.search {
+  width: 290px;
+  width: 290px;
+  height: 32px;
+  background: #efefef;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 12px;
+  color: #999999;
+  border: 0;
+  margin: 14px 10px;
+}
+.search::placeholder {
+  text-align: center;
+}
+.search:focus {
+  text-align: center;
+  border: 0;
+  color: black;
+}

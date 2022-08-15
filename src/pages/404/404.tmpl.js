@@ -1,3 +1,4 @@
+export const page404Template = `
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,3 +11,4 @@
   Ничего не найдено
 </body>
 </html>
+`;
