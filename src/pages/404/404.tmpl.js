@@ -1,3 +1,5 @@
+import './404.css';
+
 export const page404Template = `
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +10,11 @@ export const page404Template = `
   <title>404 Page not found</title>
 </head>
 <body>
-  Ничего не найдено
+  <div class="page404_container">
+    <span class="page404_error">404</span>
+    <span class="page404_message">Не туда попали</span>
+    <a class="page404_link" href="./">Назад к чатам</a>
+  </div>
 </body>
 </html>
 `;
