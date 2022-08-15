@@ -26,7 +26,7 @@ export const chatTemplate = `
     </div>
     <div class="chat_inputarea">
       <img src="{{clip}}" alt="clip">
-      <input class="chat_input" type="text" placeholder="Сообщение">
+      <input name="message" class="chat_input" type="text" placeholder="Сообщение">
       <button class="chat_send"><img src="{{send}}" alt="send"></button>
     </div>
   </div>
