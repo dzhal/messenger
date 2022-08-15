@@ -1,5 +1,5 @@
-import { chatList } from '../../modules/chat-list';
-import { chat } from '../../modules/chat';
+import { chatList } from '../../components/chat-list';
+import { chat } from '../../components/chat';
 import './main.css';
 
 export const mainTemplate = `
