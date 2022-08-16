@@ -1,5 +1,4 @@
 .chat_container {
-  height: 100%;
   width: 100%;
   padding: 10px 20px;
   padding-left: 10px;
@@ -9,7 +8,6 @@
   justify-content: end;
   position: relative;
 }
-
 .chat_header {
   position: absolute;
   top: 10px;
@@ -27,11 +25,11 @@
   flex: 1;
   position: absolute;
   right: 30px;
-}
-.chat_menu:after {
-  text-align: right;
-  content: '\2807';
-  font-size: 20px;
+  &:after {
+    text-align: right;
+    content: '\2807';
+    font-size: 20px;
+  }
 }
 .chat_conversation {
   display: flex;
@@ -42,26 +40,19 @@
 .message {
   max-width: 70%;
   padding: 10px;
-  margin: 10px;
+  margin: 5px 10px;
   font-weight: 500;
   font-size: 12px;
   line-height: 15px;
   color: #1e1e1e;
   background: #f8f8f8;
   border-radius: 12px;
+  &.user {
+    align-self: end;
+    background-color: #e4edfd;
+  }
 }
-.message-user {
-  max-width: 70%;
-  padding: 10px;
-  margin: 5px 10px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 15px;
-  color: #1e1e1e;
-  background: #e4edfd;
-  border-radius: 12px;
-  align-self: end;
-}
+
 .chat_inputarea {
   display: flex;
   align-items: center;
@@ -87,21 +78,9 @@
     outline: none;
     color: black;
   }
-}
-.chat_input:focus {
-  border: 1px solid #3369f3;
-  outline: none;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 12px;
-  color: black;
-}
-input:focus {
-  border: 1px solid #3369f3;
-}
-.chat_input::placeholder {
-  text-align: center;
+  &::placeholder {
+    text-align: center;
+  }
 }
 .chat_send {
   width: 28px;

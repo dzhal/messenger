@@ -3,8 +3,8 @@ import { chat } from '../../components/chat';
 import './main.css';
 
 export const mainTemplate = `
-  <div class="main_container">
+  <main class="main_container">
     {{> chatList }}
     {{> chat }}  
-  </div>
+  </main>
 `;

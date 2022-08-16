@@ -3,10 +3,9 @@ import { search } from '../../components/search';
 import { avatar } from '../../components/avatar';
 
 export const chatListTemplate = `
-  
-  <div class='chatList_container'>
+  <section class='chatList_container'>
     <div class="chatlist_header">
-      <a href="profile">Профиль ></a>
+      <a href="profile">Profile ></a>
     </div>
     {{> search }}
     <div class="chatShort">
@@ -16,7 +15,7 @@ export const chatListTemplate = `
           Андрей
         </div>
         <div class="content">
-          Изображение
+          Picture
         </div>
         <div class="time">
           10:49
@@ -35,7 +34,7 @@ export const chatListTemplate = `
           Андрей
         </div>
         <div class="content">
-          Изображение
+          Picture
         </div>
         <div class="time">
           10:49
@@ -44,7 +43,6 @@ export const chatListTemplate = `
           2
         </div>
       </div>
-    </div>
-    
-  </div>  
+    </div>   
+  </section>  
 `;
