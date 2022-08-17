@@ -1,28 +1,24 @@
 .button {
   &_primary {
-    width: 280px;
-    height: 37px;
-    cursor: pointer;
-    background: #3369f3;
-    border-radius: 8px;
-    color: white;
+    background: var(--color-primary);
+    color: var(--color-bg-primary);
+    width: 17.5rem;
+    height: 2.313rem;
+    border-radius: 0.5rem;
     border: 0;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 13px;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    cursor: pointer;
   }
   &_secondary {
+    color: var(--color-primary);
     width: fit-content;
-    cursor: pointer;
     margin: 0;
     padding: 0;
     border: 0;
     background: transparent;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 11px;
-    line-height: 11px;
-    color: #3369f3;
+    font-size: 0.688rem;
+    line-height: 0.688rem;
+    cursor: pointer;
   }
 }

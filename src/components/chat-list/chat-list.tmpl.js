@@ -1,48 +1,14 @@
-import './chat-list.css';
-import { search } from '../../components/search';
-import { avatar } from '../../components/avatar';
+// language=hbs
+import './chat-list.css'
 
-export const chatListTemplate = `
+export default `
   <section class='chatList_container'>
-    <div class="chatlist_header">
-      <a href="profile">Profile ></a>
+    <div class="chatList_header">
+      <a href="/profile">Profile ></a>
     </div>
     {{> search }}
-    <div class="chatShort">
-      {{> avatar }}
-      <div class="chatInfo">
-        <div class="chatName">
-          Андрей
-        </div>
-        <div class="content">
-          Picture
-        </div>
-        <div class="time">
-          10:49
-        </div>
-        <div class="count">
-          2
-        </div>
-      </div>
-    </div>
-    <div class="chatShort">
-      <div class="avatar">
-        
-      </div>
-      <div class="chatInfo">
-        <div class="chatName">
-          Андрей
-        </div>
-        <div class="content">
-          Picture
-        </div>
-        <div class="time">
-          10:49
-        </div>
-        <div class="count">
-          2
-        </div>
-      </div>
-    </div>   
+    {{> chatShort name="Vitalya" text="hello" time="11:00" count="1" }}
+    {{> chatShort name="Андрей" text="Picture" time="10:49" count="2" }}
+    {{> chatShort name="Ivan" text="kak dela?" time="12:00" count="10" }}  
   </section>  
-`;
+`

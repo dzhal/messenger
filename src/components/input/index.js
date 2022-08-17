@@ -1,4 +1,4 @@
-import { inputTemplate } from './input.tmpl';
-import Handlebars from 'handlebars';
+import template from './input.tmpl'
+import Handlebars from 'handlebars'
 
-export const input = Handlebars.registerPartial('input', inputTemplate);
+Handlebars.registerPartial('input', template)

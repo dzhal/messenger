@@ -1,8 +1,7 @@
-import './chat.css';
-import { avatar } from '../../components/avatar';
-import clip from '../../assets/images/clip.svg';
+// language=hbs
+import './chat.css'
 
-export const chatTemplate = `
+export default `
   <section class="chat_container">
     <div class="chat_header">
       {{> avatar }}
@@ -30,9 +29,9 @@ export const chatTemplate = `
       </div>
     </div>
     <div class="chat_inputarea">
-      <img src="{{clip}}" alt="clip">
+      <img src="{{ clip }}" alt="clip">
       <input name="message" class="chat_input" type="text" placeholder="Enter message">
-      <button class="chat_send"><img src="{{send}}" alt="send"></button>
+      <button class="chat_send"><img src="{{ send }}" alt="send"></button>
     </div>
   </section>
-`;
+`

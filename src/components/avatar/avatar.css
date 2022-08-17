@@ -1,6 +1,6 @@
 .avatar {
-  width: 47px;
-  height: 47px;
+  width: 2.9rem;
+  height: 2.9rem;
   border-radius: 50%;
-  background: #efefef;
+  background: var(--color-border);
 }

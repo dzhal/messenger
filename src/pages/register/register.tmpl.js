@@ -1,10 +1,9 @@
-import { input } from '../../components/input';
-import { button } from '../../components/button';
-import './register.css';
+// language=hbs
+import './register.css'
 
 export const registerTemplate = `
   <div class="register_container">
-    <h1>Registration</h1>
+    <h1 class="register_title">Registration</h1>
     <div class="register_input">
       {{> input type="text" name="email" placeholder="Email" }}
       {{> input type="text" name="login" placeholder="Login" }}
@@ -23,4 +22,4 @@ export const registerTemplate = `
       </div>
     </div>
   </div>
-`;
+`

@@ -1,5 +1,5 @@
-import './profile.css';
-import { button } from '../../components/button';
+// language=hbs
+import './profile.css'
 
 export const profileTemplate = `
   <div class="profile_container">
@@ -27,4 +27,4 @@ export const profileTemplate = `
       <img src="{{back}}" alt="clip">
     </div> 
   </div>
-`;
+`

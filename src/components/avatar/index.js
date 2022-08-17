@@ -1,5 +1,4 @@
-// import './avatar.css';
-import Handlebars from 'handlebars';
-import { avatarTemplate } from './avatar.tmpl';
+import Handlebars from 'handlebars'
+import template from './avatar.tmpl'
 
-export const avatar = Handlebars.registerPartial('avatar', avatarTemplate);
+Handlebars.registerPartial('avatar', template)

@@ -1,4 +1,4 @@
-import { chatTemplate } from './chat.tmpl';
-import Handlebars from 'handlebars';
+import Handlebars from 'handlebars'
+import template from './chat.tmpl'
 
-export const chat = Handlebars.registerPartial('chat', chatTemplate);
+Handlebars.registerPartial('chat', template)

@@ -1,7 +1,4 @@
-import './avatar.css';
+// language=hbs
+import './avatar.css'
 
-export const avatarTemplate = `
-<div class="avatar">
-        
-</div>
-`;
+export default `<div class="avatar"></div>`

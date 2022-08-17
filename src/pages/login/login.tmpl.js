@@ -1,10 +1,10 @@
-import { input } from '../../components/input';
-import { button } from '../../components/button';
-import './login.css';
+import { input } from '../../components/input'
+import { button } from '../../components/button'
+import './login.css'
 
 export const loginTemplate = `
   <div class="login_container">
-    <h1>Login</h1>
+    <h1 class="login_title">Login</h1>
     <div class="login_input">
       {{> input type="text" name="login" placeholder="Username" }}
       {{> input type="password" name="password" placeholder="Password" }}
@@ -18,4 +18,4 @@ export const loginTemplate = `
       </div>
     </div>
   </div>
-`;
+`
