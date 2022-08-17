@@ -1,0 +1,32 @@
+{
+  "name": "messenger",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "parcel build index.html",
+    "start": "npm run build && node src/server.js",
+    "dev": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dzhal/messenger.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dzhal/messenger/issues"
+  },
+  "homepage": "https://github.com/dzhal/messenger#readme",
+  "devDependencies": {
+    "@anikin/parcel-transformer-handlebars": "1.0.9",
+    "handlebars": "4.7.7",
+    "parcel": "2.7.0",
+    "postcss": "8.4.16",
+    "postcss-nested": "5.0.6"
+  },
+  "dependencies": {
+    "express": "4.18.1"
+  }
+}
+

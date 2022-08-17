@@ -1,0 +1,28 @@
+.chatList_container {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 19.375rem;
+  padding-right: 0.625rem;
+  padding-left: 0.625rem;
+  background: var(--colot-bg-secondary);
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 0.063rem solid var(--color-border);
+  &:last-child {
+    border-bottom: 0.063rem solid var(--color-border);
+  }
+}
+.chatList_header {
+  font-weight: normal;
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  text-align: right;
+  color: var(--color-text-secondary);
+  padding: 0.625rem;
+  text-decoration: none;
+  & a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+}
