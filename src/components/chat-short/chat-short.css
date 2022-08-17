@@ -1,0 +1,42 @@
+.chatShort {
+  display: flex;
+  position: relative;
+  height: 4.375rem;
+  padding: 0.625rem;
+  border-top: 0.063rem solid var(--color-border);
+  &_chatInfo {
+    display: flex;
+    gap: 0.25rem;
+    flex-direction: column;
+    margin-left: 0.625rem;
+  }
+  &_content {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: var(--color-text-secondary);
+  }
+  &_time {
+    position: absolute;
+    top: 0.625rem;
+    right: 0.625rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    font-size: 0.563rem;
+    line-height: 0.813rem;
+  }
+  &_count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 0.625rem;
+    right: 0.625rem;
+    font-size: 0.688rem;
+    line-height: 0.75rem;
+    color: var(--color-bg-primary);
+    background-color: var(--color-primary);
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+  }
+}

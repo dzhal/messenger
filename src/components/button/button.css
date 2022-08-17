@@ -1,0 +1,24 @@
+.button {
+  &_primary {
+    background: var(--color-primary);
+    color: var(--color-bg-primary);
+    width: 17.5rem;
+    height: 2.313rem;
+    border-radius: 0.5rem;
+    border: 0;
+    font-size: 0.8rem;
+    line-height: 0.8rem;
+    cursor: pointer;
+  }
+  &_secondary {
+    color: var(--color-primary);
+    width: fit-content;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    font-size: 0.688rem;
+    line-height: 0.688rem;
+    cursor: pointer;
+  }
+}

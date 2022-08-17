@@ -1,0 +1,24 @@
+.search {
+  max-width: 18.125rem;
+  height: 2rem;
+  border-radius: 0.313rem;
+  background: var(--color-border);
+  color: var(--color-text-common);
+  font-size: 0.75rem;
+  line-height: 0.75rem;
+  margin: 0.875rem 0.625rem;
+  border: 0;
+  &_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &::placeholder {
+    text-align: center;
+  }
+  &:focus {
+    text-align: center;
+    border: 0;
+    color: var(--color-text-common);
+  }
+}
