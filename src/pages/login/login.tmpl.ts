@@ -1,5 +1,5 @@
-import { input } from '../../components/input'
-import { button } from '../../components/button'
+import { input } from '../../components/input/index.ts'
+import { button } from '../../components/button/index.ts'
 import './login.css'
 
 export const loginTemplate = `

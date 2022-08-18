@@ -1,4 +1,4 @@
 import Handlebars from 'handlebars'
 import template from './button.tmpl'
 
-Handlebars.registerPartial('button', template)
+export const button = Handlebars.registerPartial('button', template)
