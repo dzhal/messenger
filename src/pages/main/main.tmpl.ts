@@ -1,10 +1,10 @@
 // language=hbs
 import './main.css'
-import { chatList } from '../../components/chat-list'
-import { chatShort } from '../../components/chat-short'
-import { chat } from '../../components/chat'
-import { avatar } from '../../components/avatar'
-import { search } from '../../components/search'
+import '../../components/chat-list'
+import '../../components/chat-short'
+import '../../components/chat'
+import '../../components/avatar'
+import '../../components/search'
 
 export const mainTemplate = `
   <main class="main_container">
