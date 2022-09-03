@@ -7,7 +7,9 @@
     "start": "npm run build && node src/server.js",
     "dev": "parcel index.html",
     "lint": "eslint --fix ./src",
-    "style": "npx stylelint \"**/*.css\" --fix\""
+    "clear": "rm -rf dist .cache",
+    "style": "npx stylelint \"**/*.css\" --fix\"",
+    "dev1": "npm run clear && parcel ./static/*.html  --port 3000"
   },
   "repository": {
     "type": "git",
@@ -28,6 +30,7 @@
     "eslint-config-airbnb-typescript": "17.0.0",
     "eslint-plugin-import": "2.26.0",
     "handlebars": "4.7.7",
+    "nanoid": "^4.0.0",
     "parcel": "2.7.0",
     "postcss": "8.4.16",
     "postcss-nested": "5.0.6",

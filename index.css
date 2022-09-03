@@ -1,0 +1,24 @@
+:root {
+  --color-primary: #3369f3;
+  --color-text-secondary: #999;
+  --color-text-common: #000;
+  --color-bg-primary: #fff;
+  --color-bg-secondary: #efefef;
+  --color-bg-message: #e4edfd;
+  --color-border: #eaeaea;
+}
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+* {
+  box-sizing: border-box;
+  font-family: Inter, serif;
+  font-style: normal;
+  font-weight: 400;
+}
+*:before,
+*:after {
+  box-sizing: border-box;
+}
