@@ -1,6 +1,6 @@
-import '../../components/input/'
-import '../../components/button/'
-import './login.css'
+import '../../components/input/';
+import '../../components/button/';
+import './login.css';
 
 export const loginTemplate = `
   <div class="login_container">
@@ -18,4 +18,4 @@ export const loginTemplate = `
       </div>
     </div>
   </div>
-`
+`;

@@ -1,5 +1,5 @@
 // language=hbs
-import './chat.css'
+import './chat.css';
 
 export default `
   <section class="chat_container">
@@ -34,4 +34,4 @@ export default `
       <button class="chat_send"><img src="{{ send }}" alt="send"></button>
     </div>
   </section>
-`
+`;

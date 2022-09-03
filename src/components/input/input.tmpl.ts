@@ -1,5 +1,5 @@
 // language=hbs
-import './input.css'
+import './input.css';
 
 export default `
   <div class="input input_group">
@@ -9,8 +9,8 @@ export default `
             value="{{ value }}" 
             {{ disabled }} 
             required>
-    <span class="input input_highlight"></span>
+    <span class="input input-highlight"></span>
     <span class="input input_bar"></span>
     <label>{{ placeholder }}</label>
   </div>
-`
+`;

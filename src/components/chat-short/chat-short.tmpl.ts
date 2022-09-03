@@ -1,5 +1,5 @@
 // language=hbs
-import './chat-short.css'
+import './chat-short.css';
 
 export default `
     <div class="chatShort">
@@ -19,4 +19,4 @@ export default `
         </div>
       </div>
     </div>
-`
+`;

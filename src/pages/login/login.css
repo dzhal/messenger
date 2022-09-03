@@ -11,7 +11,7 @@
   width: 21.25rem;
   height: 28.75rem;
   background: var(--color-bg-primary);
-  box-shadow: 0 0 0.375rem rgba(0, 0, 0, 0.14);
+  box-shadow: 0 0 0.375rem rgb(0 0 0 / 14%);
   border-radius: 0.75rem;
   padding: 1.875rem;
 }
@@ -24,7 +24,6 @@
 .login_button-primary {
   margin-bottom: 0.875rem;
 }
-
 .login_title {
   font-size: 1.25rem;
   line-height: 1.25rem;

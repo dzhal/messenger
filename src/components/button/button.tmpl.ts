@@ -1,4 +1,4 @@
 // language=hbs
-import './button.css'
+import './button.css';
 
-export default `<button type="{{ type }}" class="button_{{ style }}">{{ text }}</button>`
+export default '<button type="{{ type }}" class="button_{{ style }}">{{ text }}</button>';

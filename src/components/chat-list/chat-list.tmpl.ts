@@ -1,5 +1,5 @@
 // language=hbs
-import './chat-list.css'
+import './chat-list.css';
 
 export default `
   <section class='chatList_container'>
@@ -11,4 +11,4 @@ export default `
     {{> chatShort name="Андрей" text="Picture" time="10:49" count="2" }}
     {{> chatShort name="Ivan" text="kak dela?" time="12:00" count="10" }}  
   </section>  
-`
+`;

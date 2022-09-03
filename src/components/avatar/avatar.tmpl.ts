@@ -1,4 +1,4 @@
 // language=hbs
-import './avatar.css'
+import './avatar.css';
 
-export default `<div class="avatar"></div>`
+export default '<div class="avatar"></div>';

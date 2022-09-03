@@ -1,5 +1,5 @@
 // language=hbs
-import './register.css'
+import './register.css';
 
 export const registerTemplate = `
   <div class="register_container">
@@ -22,4 +22,4 @@ export const registerTemplate = `
       </div>
     </div>
   </div>
-`
+`;

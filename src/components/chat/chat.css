@@ -49,7 +49,6 @@
     background-color: var(--color-bg-message);
   }
 }
-
 .chat_inputarea {
   display: flex;
   align-items: center;
