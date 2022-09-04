@@ -1,5 +1,5 @@
 {
-  "extends": "stylelint-config-standard-scss",
+  "extends": "stylelint-config-standard",
   "rules": {
     "color-hex-case": "lower",
     "rule-empty-line-before": "never",
