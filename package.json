@@ -5,11 +5,10 @@
   "scripts": {
     "build": "parcel build index.html",
     "start": "npm run build && node src/server.js",
-    "dev": "parcel index.html",
     "lint": "eslint --fix ./src",
     "clear": "rm -rf dist .cache",
     "style": "npx stylelint \"**/*.css\" --fix\"",
-    "dev1": "npm run clear && parcel ./static/*.html  --port 3000"
+    "dev": "npm run clear && parcel ./static/*.html  --port 3000"
   },
   "repository": {
     "type": "git",
