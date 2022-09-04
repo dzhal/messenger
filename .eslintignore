@@ -1,4 +1,4 @@
 /dist
 /node_modules
 **/*.min.js
-server.js 
+server.js
