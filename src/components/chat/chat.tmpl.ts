@@ -4,7 +4,7 @@ import './chat.css';
 export default `
   <section class="chat_container">
     <div class="chat_header">
-      {{> avatar }}
+      {{ avatar }}
       <div class="chat_name">
         Вадим
       </div>

@@ -1,9 +1,9 @@
+import template from './main.tmpl';
 import Handlebars from 'handlebars';
 import Block from '../../utils/block';
 import { TProps } from '../../utils/types';
-import template from './avatar.tmpl';
 
-export default class Avatar extends Block {
+export default class Main extends Block {
   public template: string = template;
 
   constructor(props: TProps) {

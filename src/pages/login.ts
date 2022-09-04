@@ -31,5 +31,4 @@ const template: string = [
   }).render(),
 ].join('');
 
-console.log('hello');
 document.getElementById('root')!.innerHTML = template;

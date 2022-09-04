@@ -1,6 +1,6 @@
 import './500.css';
 
-export const page500Template = `
+export default `
 <!DOCTYPE html>
 <html lang="en">
 <head>

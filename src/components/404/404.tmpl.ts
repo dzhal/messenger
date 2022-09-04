@@ -1,7 +1,6 @@
 import './404.css';
-import { input } from '../../components/input';
 
-export const page404Template = `
+export default `
 <!DOCTYPE html>
 <html lang="en">
 <head>

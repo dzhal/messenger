@@ -3,7 +3,7 @@ import './chat-short.css';
 
 export default `
     <div class="chatShort">
-      {{> avatar }}
+      {{ avatar }}
       <div class="chatShort_chatInfo">
         <div class="chatShort_chatName">
             {{ name }}
