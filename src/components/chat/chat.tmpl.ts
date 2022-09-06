@@ -4,9 +4,9 @@ import './chat.css';
 export default `
   <section class="chat_container">
     <div class="chat_header">
-      {{ avatar }}
+      {{{ avatar }}}
       <div class="chat_name">
-        Вадим
+        {{ chatName }}
       </div>
       <div class="chat_menu"></div>
     </div>
@@ -29,9 +29,9 @@ export default `
       </div>
     </div>
     <div class="chat_inputarea">
-      <img src="{{ clip }}" alt="clip">
-      <input name="message" class="chat_input" type="text" placeholder="Enter message">
-      <button class="chat_send"><img src="{{ send }}" alt="send"></button>
+      {{{ imageClip }}}
+      {{{ input }}}
+      {{{ button }}}
     </div>
   </section>
 `;

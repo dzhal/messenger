@@ -6,7 +6,7 @@
     "build": "parcel build index.html",
     "start": "npm run clear && parcel build ./static/*.html --no-source-maps --no-cache --public-url ./ && node ./server.js",
     "lint": "eslint --fix ./src",
-    "clear": "rm -rf dist .cache",
+    "clear": "rm -rf dist .parcel-cache",
     "style": "npx stylelint \"**/*.css\" --fix\"",
     "dev": "npm run clear && parcel ./static/*.html  --port 3000"
   },

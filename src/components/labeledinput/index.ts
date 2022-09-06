@@ -1,14 +1,14 @@
+import template from './input.tmpl';
 import Handlebars from 'handlebars';
 import Block from '../../utils/block';
 import { TProps } from '../../utils/types';
-import template from './chat.tmpl';
 
-export default class Chat extends Block {
+export default class LabeledInput extends Block {
   constructor(props: TProps) {
     super('div', props);
   }
 
-  render() {
+  public render() {
     return this.compile(Handlebars.compile(template), this.props);
   }
 }

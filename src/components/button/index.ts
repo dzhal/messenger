@@ -5,11 +5,10 @@ import template from './button.tmpl';
 
 export default class Button extends Block {
   constructor(props: TProps) {
-    super();
-    this.props = props;
+    super('div', props);
   }
 
-  render(): string {
-    return Handlebars.compile(template, { noEscape: true })(this.props);
+  render() {
+    return this.compile(Handlebars.compile(template), this.props);
   }
 }

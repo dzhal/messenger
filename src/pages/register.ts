@@ -1,70 +1,76 @@
 import Button from '../components/button';
 import Register from '../components/register';
 import Input from '../components/input';
+import { submitHandler } from '../utils/submitHandler';
+import LabeledInput from '../components/labeledinput';
 
-const template: string = [
-  new Register({
-    buttonLogin: new Button({
-      type: 'button',
-      style: 'secondary',
-      text: 'Sign in',
-    }).render(),
-    buttonRegister: new Button({
-      type: 'submit',
-      style: 'primary',
-      text: 'Register',
-    }).render(),
-    inputEmail: new Input({
+const fragment = new Register({
+  buttonRegister: new Button({
+    type: 'submit',
+    className: 'button_primary',
+    text: 'Register',
+    events: {
+      click: (event: SubmitEvent) => {
+        event.preventDefault();
+        submitHandler();
+      },
+    },
+  }),
+  buttonLogin: new Button({
+    type: 'button',
+    className: 'button_secondary',
+    text: 'Sign in',
+  }),
+  inputEmail: new LabeledInput({
+    input: new Input({
       type: 'text',
       name: 'email',
-      placeholder: 'Email',
-      disabled: '',
-      value: '',
-    }).render(),
-    inputLogin: new Input({
+    }),
+    placeholder: 'Email',
+  }),
+  inputLogin: new LabeledInput({
+    input: new Input({
       type: 'text',
       name: 'login',
-      placeholder: 'Login',
-      disabled: '',
-      value: '',
-    }).render(),
-    inputFirstName: new Input({
+    }),
+    placeholder: 'Login',
+  }),
+  inputFirstName: new LabeledInput({
+    input: new Input({
       type: 'text',
       name: 'first_name',
-      placeholder: 'Name',
-      disabled: '',
-      value: '',
-    }).render(),
-    inputSecondName: new Input({
+    }),
+    placeholder: 'Name',
+  }),
+  inputSecondName: new LabeledInput({
+    input: new Input({
       type: 'text',
       name: 'second_name',
-      placeholder: 'Surname',
-      disabled: '',
-      value: '',
-    }).render(),
-    inputPhone: new Input({
+    }),
+    placeholder: 'Surname',
+  }),
+  inputPhone: new LabeledInput({
+    input: new Input({
       type: 'text',
       name: 'phone',
-      placeholder: 'Phone number',
-      disabled: '',
-      value: '',
-    }).render(),
-    inputPassword: new Input({
+    }),
+    placeholder: 'Phone number',
+  }),
+  inputPassword: new LabeledInput({
+    input: new Input({
       type: 'password',
       name: 'password',
-      placeholder: 'Password',
-      disabled: '',
-      value: '',
-    }).render(),
-    inputRepeatPassword: new Input({
+    }),
+    placeholder: 'Password',
+  }),
+  inputRepeatPassword: new LabeledInput({
+    input: new Input({
       type: 'password',
       name: 'password-repeat',
-      placeholder: 'Password (repeat)',
-      disabled: '',
-      value: '',
-    }).render(),
-  }).render(),
-].join('');
+    }),
+    placeholder: 'Password (repeat)',
+  }),
+});
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-document.getElementById('root')!.innerHTML = template;
+document.getElementById('root')?.append(fragment.getContent());

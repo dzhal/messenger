@@ -6,9 +6,9 @@ export default `
     <div class="chatList_header">
       <a href="/profile.html">Profile ></a>
     </div>
-    {{ search }}
-    {{ chatShort1 }}
-    {{ chatShort2 }}
-    {{ chatShort3 }} 
+    {{{ search }}}
+    {{{ chatShort1 }}}
+    {{{ chatShort2 }}}
+    {{{ chatShort3 }}} 
   </section>  
 `;

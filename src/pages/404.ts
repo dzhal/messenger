@@ -1,5 +1,5 @@
 import Page404 from '../components/404';
 
-const template = [new Page404({}).render()].join();
+const fragment = new Page404({});
 
-document.getElementById('root')!.innerHTML = template;
+document.getElementById('root')?.append(fragment.getContent());

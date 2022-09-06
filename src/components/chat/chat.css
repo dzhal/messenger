@@ -67,6 +67,9 @@
   line-height: 0.75rem;
   color: var(--color-text-secondary);
   padding: 1rem;
+  &.invalid {
+    border: 1px solid var(--color-border);
+  }
   &:focus {
     border: 0.063rem solid var(--color-primary);
     outline: none;

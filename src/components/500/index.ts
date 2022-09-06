@@ -4,14 +4,11 @@ import Block from '../../utils/block';
 import { TProps } from '../../utils/types';
 
 export default class Page500 extends Block {
-  public template: string = template;
-
   constructor(props: TProps) {
-    super();
-    this.props = props;
+    super('div', props);
   }
 
-  public render() {
-    return Handlebars.compile(template, { noEscape: true })(this.props);
+  render() {
+    return this.compile(Handlebars.compile(template), this.props);
   }
 }

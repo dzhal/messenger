@@ -4,14 +4,11 @@ import { TProps } from '../../utils/types';
 import template from './chat-short.tmpl';
 
 export default class ChatShort extends Block {
-  public template: string = template;
-
   constructor(props: TProps) {
-    super();
-    this.props = props;
+    super('div', props);
   }
 
-  public render() {
-    return Handlebars.compile(template, { noEscape: true })(this.props);
+  render() {
+    return this.compile(Handlebars.compile(template), this.props);
   }
 }

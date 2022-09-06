@@ -1,6 +1,7 @@
 import EventBus from './event-bus';
 import { IBlock, IEventBus, TProps, TMeta } from './types';
 import { nanoid } from 'nanoid';
+import { TemplateDelegate } from 'handlebars';
 
 export default class Block implements IBlock {
   static EVENTS = {
@@ -10,11 +11,15 @@ export default class Block implements IBlock {
     FLOW_RENDER: 'flow:render',
   };
 
-  private _element: HTMLElement = document.createElement('div');
+  protected _element: HTMLElement = document.createElement('div');
 
   private _meta: TMeta = <TMeta>{};
 
   public props: TProps = <TProps>{};
+
+  public id = nanoid(6);
+
+  public children: Record<string, Block>;
 
   private eventBus: () => IEventBus;
 
@@ -24,8 +29,11 @@ export default class Block implements IBlock {
    *
    * @returns {void}
    */
-  constructor(tagName = 'div', props = <TProps>{}) {
+
+  constructor(tagName = 'div', propsWithChildren: Record<string, TProps> = {}) {
     const eventBus = new EventBus();
+
+    const { props, children } = this._getChildrenAndProps(propsWithChildren);
     this._meta = {
       tagName,
       props,
@@ -34,6 +42,8 @@ export default class Block implements IBlock {
     this.props = this._makePropsProxy(props);
 
     this.eventBus = () => eventBus;
+
+    this.children = children;
 
     this._registerEvents(eventBus);
 
@@ -45,6 +55,47 @@ export default class Block implements IBlock {
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  _getChildrenAndProps(childrenAndProps: Record<string, Block | any>) {
+    const props: TProps = {};
+    const children: Record<string, Block> = {};
+
+    Object.entries(childrenAndProps).forEach(([key, value]) => {
+      if (value instanceof Block) {
+        children[key] = value;
+      } else {
+        props[key] = value;
+      }
+    });
+
+    return { props, children };
+  }
+
+  protected compile(
+    template: TemplateDelegate,
+    context: Record<string, string>,
+  ) {
+    const contextAndStubs = { ...context };
+
+    Object.entries(this.children).forEach(([name, component]) => {
+      contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
+    });
+    const html = template(contextAndStubs);
+    const temp = document.createElement('template');
+    temp.innerHTML = html;
+    Object.entries(this.children).forEach(([, component]) => {
+      const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
+      if (!stub) {
+        return;
+      }
+      component.getContent()?.append(...Array.from(stub.childNodes));
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      stub.replaceWith(component.getContent()!);
+    });
+
+    return temp.content;
   }
 
   private _addEvents(): void {
@@ -68,8 +119,6 @@ export default class Block implements IBlock {
   }
 
   private _createResources(): void {
-    const { tagName } = this._meta;
-    this._element = this._createDocumentElement(tagName);
     if (this.props.wrapperClass) {
       this._element.classList.add(this.props.wrapperClass);
     }
@@ -118,26 +167,21 @@ export default class Block implements IBlock {
     return this._element;
   }
 
-  private _render(): void {
-    const block: string = this.render();
-
-    if (this.getElementForEvent()) {
-      this._removeEvents();
-    }
-
-    this._element.innerHTML = block;
-    if (this.props.dataset) {
-      this.element.setAttribute('data-inputs', this.props.dataset);
-    }
-
+  private _render() {
+    const fragment = this.render();
+    this._element = fragment.firstElementChild as HTMLElement;
     this._addEvents();
   }
 
-  public render(): string {
-    return '';
+  protected render(): DocumentFragment {
+    return new DocumentFragment();
   }
 
   public getWrapperElement(): HTMLElement {
+    return this.element;
+  }
+
+  getContent() {
     return this.element;
   }
 
@@ -162,8 +206,6 @@ export default class Block implements IBlock {
   private _createDocumentElement(tagName: string): HTMLElement {
     return document.createElement(tagName);
   }
-
-  public id = nanoid(7);
 
   public show(): void {
     if (this.element) {

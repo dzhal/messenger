@@ -3,7 +3,7 @@ import './main.css';
 
 export default `
   <main class="main_container"> 
-   {{ chatList }}
-   {{ chat }}
+   {{{ chatList }}}
+   {{{ chat }}}
   </main>
 `;
