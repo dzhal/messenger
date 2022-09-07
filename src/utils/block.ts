@@ -1,5 +1,5 @@
 import EventBus from './event-bus';
-import { IBlock, IEventBus, TProps, TMeta } from './types';
+import { IBlock, IEventBus, TProps } from './types';
 import { nanoid } from 'nanoid';
 import { TemplateDelegate } from 'handlebars';
 
@@ -13,8 +13,6 @@ export default class Block implements IBlock {
 
   protected _element: HTMLElement = document.createElement('div');
 
-  private _meta: TMeta = <TMeta>{};
-
   public props: TProps = <TProps>{};
 
   public id = nanoid(6);
@@ -24,20 +22,15 @@ export default class Block implements IBlock {
   private eventBus: () => IEventBus;
 
   /** JSDoc
-   * @param {string} tagName
-   * @param {Object} props
+   * @param {Object} propsWithChildren
    *
    * @returns {void}
    */
 
-  constructor(tagName = 'div', propsWithChildren: Record<string, TProps> = {}) {
+  constructor(propsWithChildren: TProps = {}) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
-    this._meta = {
-      tagName,
-      props,
-    };
 
     this.props = this._makePropsProxy(props);
 
@@ -108,14 +101,6 @@ export default class Block implements IBlock {
 
   public getElementForEvent(): HTMLElement {
     return this._element;
-  }
-
-  private _removeEvents(): void {
-    const { events = {} } = this.props;
-    const element = this.getElementForEvent();
-    Object.keys(events).forEach((eventName) => {
-      element.removeEventListener(eventName, events[eventName]);
-    });
   }
 
   private _createResources(): void {
@@ -201,10 +186,6 @@ export default class Block implements IBlock {
         throw new Error('Access denied');
       },
     });
-  }
-
-  private _createDocumentElement(tagName: string): HTMLElement {
-    return document.createElement(tagName);
   }
 
   public show(): void {

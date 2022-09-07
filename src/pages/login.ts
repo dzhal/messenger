@@ -2,7 +2,7 @@ import Button from '../components/button';
 import Login from '../components/login';
 import Input from '../components/input';
 import LabeledInput from '../components/labeledinput';
-import { submitHandler } from '../utils/submitHandler';
+import { loginSubmitHandler } from '../utils/submitHandlers';
 
 const fragment = new Login({
   buttonLogin: new Button({
@@ -10,7 +10,7 @@ const fragment = new Login({
     className: 'button_primary',
     text: 'Sign in',
     events: {
-      click: () => submitHandler(),
+      click: () => loginSubmitHandler(),
     },
   }),
   buttonRegister: new Button({

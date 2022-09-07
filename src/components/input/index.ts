@@ -6,7 +6,7 @@ import { validateInput } from '../../utils/validateInput';
 
 export default class Input extends Block {
   constructor(props: TProps) {
-    super('div', {
+    super({
       ...props,
       events: {
         blur: () => this.onBlur(),

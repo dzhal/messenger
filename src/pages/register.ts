@@ -1,7 +1,7 @@
 import Button from '../components/button';
 import Register from '../components/register';
 import Input from '../components/input';
-import { submitHandler } from '../utils/submitHandler';
+import { registrationSubmitHandler } from '../utils/submitHandlers';
 import LabeledInput from '../components/labeledinput';
 
 const fragment = new Register({
@@ -12,7 +12,8 @@ const fragment = new Register({
     events: {
       click: (event: SubmitEvent) => {
         event.preventDefault();
-        submitHandler();
+        // submitHandler(event);
+        registrationSubmitHandler();
       },
     },
   }),

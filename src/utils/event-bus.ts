@@ -1,7 +1,9 @@
 import { IEventBus } from './types';
 
 export default class EventBus implements IEventBus {
-  private readonly listeners: Record<string, Array<() => void>> = {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private readonly listeners: Record<string, Array<(...args: any) => void>> =
+    {};
 
   constructor() {
     this.listeners = {};

@@ -1,6 +1,5 @@
 const regexEmail = /^[\w&.-]+@\w+.[A-Za-z]{2,4}/;
 const regexName = /^[A-ZА-Я][A-Za-zА-Яа-я-]+/;
-// const regexLogin = /^\w*[a-zA-Z-_]\w*$/g;
 const regexLogin = /^[a-zA-Z-_]+$/;
 const regexPhone = /^\+?\d{10,15}$/;
 const regexPassword = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,40}$/;
