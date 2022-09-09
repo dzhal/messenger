@@ -1,17 +1,17 @@
-import { validateInput } from './validateInput';
+import { valid } from './validateHelpers';
+import { loginRules, registerRules } from './validateRules';
 
 export function loginSubmitHandler() {
   let validForm = true;
   const formData: Record<string, string> = {};
-  const registerInputs = document
-    .querySelector('.login_container')
-    ?.querySelectorAll('input');
+  const loginInputs =
+    document.querySelector('.login_container')?.querySelectorAll('input') ?? [];
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  registerInputs!.forEach((input) => {
-    if (!validateInput(input.name, input.value)) {
+  loginInputs.forEach((input) => {
+    if (!valid(() => input.value, loginRules[input.name])) {
       input.classList.add('invalid');
-      const error = input.parentNode?.querySelector('.error');
+      const error = input.parentNode?.querySelector('.input_error');
       if (error) {
         error.textContent = `Enter correct ${input.name}`;
       }
@@ -28,15 +28,14 @@ export function loginSubmitHandler() {
 export function registrationSubmitHandler() {
   let validForm = true;
   const formData: Record<string, string> = {};
-  const registerInputs = document
-    .querySelector('.register_container')
-    ?.querySelectorAll('input');
-
+  const registerInputs =
+    document.querySelector('.register_container')?.querySelectorAll('input') ??
+    [];
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  registerInputs!.forEach((input) => {
-    if (!validateInput(input.name, input.value)) {
+  registerInputs.forEach((input) => {
+    if (!valid(() => input.value, registerRules[input.name])) {
       input.classList.add('invalid');
-      const error = input.parentNode?.querySelector('.error');
+      const error = input.parentNode?.querySelector('.input_error');
       if (error) {
         error.textContent = `Enter correct ${input.name}`;
       }

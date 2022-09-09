@@ -11,7 +11,7 @@ export default class Block implements IBlock {
     FLOW_RENDER: 'flow:render',
   };
 
-  protected _element: HTMLElement = document.createElement('div');
+  private _element: HTMLElement = document.createElement('div');
 
   public props: TProps = <TProps>{};
 
@@ -50,8 +50,10 @@ export default class Block implements IBlock {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  _getChildrenAndProps(childrenAndProps: Record<string, Block | any>) {
+  protected _getChildrenAndProps(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    childrenAndProps: Record<string, Block | any>,
+  ) {
     const props: TProps = {};
     const children: Record<string, Block> = {};
 
