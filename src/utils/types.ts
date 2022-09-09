@@ -18,3 +18,7 @@ export type TMeta = {
   tagName: string;
   props: TProps;
 };
+
+export type Validator = (value: string) => boolean;
+export type Predicate = Validator;
+export type Computed<T> = () => T;

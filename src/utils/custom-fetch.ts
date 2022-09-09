@@ -1,23 +1,21 @@
-const METHODS = {
-  GET: 'GET',
-  POST: 'POST',
-  PUT: 'PUT',
-  DELETE: 'DELETE',
-};
+enum METHODS {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+}
 
 export function queryStringify(data: Record<string, string>) {
   if (data === null || typeof data !== 'object') {
     throw new Error('Data must be object');
   }
-  let result = '?';
-  Object.keys(data).forEach((item) => {
-    result += `${item}=${data[item].toString()}&`;
-  });
-  return result.slice(0, -1);
+  return Object.entries(data)
+    .map(([key, value]) => `${key}=${value}`)
+    .join('&');
 }
 type TOptions = {
   headers?: Record<string, string>;
-  method?: typeof METHODS[keyof typeof METHODS];
+  method?: METHODS;
   data?: Record<string, string> | FormData;
   timeout?: number;
 };

@@ -1,5 +1,5 @@
 import EventBus from './event-bus';
-import { IBlock, IEventBus, TProps, TMeta } from './types';
+import { IBlock, IEventBus, TProps } from './types';
 import { nanoid } from 'nanoid';
 import { TemplateDelegate } from 'handlebars';
 
@@ -11,9 +11,7 @@ export default class Block implements IBlock {
     FLOW_RENDER: 'flow:render',
   };
 
-  protected _element: HTMLElement = document.createElement('div');
-
-  private _meta: TMeta = <TMeta>{};
+  private _element: HTMLElement = document.createElement('div');
 
   public props: TProps = <TProps>{};
 
@@ -24,20 +22,15 @@ export default class Block implements IBlock {
   private eventBus: () => IEventBus;
 
   /** JSDoc
-   * @param {string} tagName
-   * @param {Object} props
+   * @param {Object} propsWithChildren
    *
    * @returns {void}
    */
 
-  constructor(tagName = 'div', propsWithChildren: Record<string, TProps> = {}) {
+  constructor(propsWithChildren: TProps = {}) {
     const eventBus = new EventBus();
 
     const { props, children } = this._getChildrenAndProps(propsWithChildren);
-    this._meta = {
-      tagName,
-      props,
-    };
 
     this.props = this._makePropsProxy(props);
 
@@ -57,8 +50,10 @@ export default class Block implements IBlock {
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  _getChildrenAndProps(childrenAndProps: Record<string, Block | any>) {
+  protected _getChildrenAndProps(
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    childrenAndProps: Record<string, Block | any>,
+  ) {
     const props: TProps = {};
     const children: Record<string, Block> = {};
 
@@ -108,14 +103,6 @@ export default class Block implements IBlock {
 
   public getElementForEvent(): HTMLElement {
     return this._element;
-  }
-
-  private _removeEvents(): void {
-    const { events = {} } = this.props;
-    const element = this.getElementForEvent();
-    Object.keys(events).forEach((eventName) => {
-      element.removeEventListener(eventName, events[eventName]);
-    });
   }
 
   private _createResources(): void {
@@ -201,10 +188,6 @@ export default class Block implements IBlock {
         throw new Error('Access denied');
       },
     });
-  }
-
-  private _createDocumentElement(tagName: string): HTMLElement {
-    return document.createElement(tagName);
   }
 
   public show(): void {

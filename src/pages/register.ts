@@ -1,8 +1,9 @@
 import Button from '../components/button';
 import Register from '../components/register';
 import Input from '../components/input';
-import { submitHandler } from '../utils/submitHandler';
+import { registrationSubmitHandler } from '../utils/submitHandlers';
 import LabeledInput from '../components/labeledinput';
+import { registerRules } from '../utils/validateRules';
 
 const fragment = new Register({
   buttonRegister: new Button({
@@ -12,7 +13,7 @@ const fragment = new Register({
     events: {
       click: (event: SubmitEvent) => {
         event.preventDefault();
-        submitHandler();
+        registrationSubmitHandler();
       },
     },
   }),
@@ -25,6 +26,7 @@ const fragment = new Register({
     input: new Input({
       type: 'text',
       name: 'email',
+      rules: registerRules.email,
     }),
     placeholder: 'Email',
   }),
@@ -32,6 +34,7 @@ const fragment = new Register({
     input: new Input({
       type: 'text',
       name: 'login',
+      rules: registerRules.login,
     }),
     placeholder: 'Login',
   }),
@@ -39,6 +42,7 @@ const fragment = new Register({
     input: new Input({
       type: 'text',
       name: 'first_name',
+      rules: registerRules.first_name,
     }),
     placeholder: 'Name',
   }),
@@ -46,6 +50,7 @@ const fragment = new Register({
     input: new Input({
       type: 'text',
       name: 'second_name',
+      rules: registerRules.second_name,
     }),
     placeholder: 'Surname',
   }),
@@ -53,6 +58,7 @@ const fragment = new Register({
     input: new Input({
       type: 'text',
       name: 'phone',
+      rules: registerRules.phone,
     }),
     placeholder: 'Phone number',
   }),
@@ -60,13 +66,15 @@ const fragment = new Register({
     input: new Input({
       type: 'password',
       name: 'password',
+      rules: registerRules.password,
     }),
     placeholder: 'Password',
   }),
   inputRepeatPassword: new LabeledInput({
     input: new Input({
       type: 'password',
-      name: 'password-repeat',
+      name: 'password_repeat',
+      rules: registerRules.password_repeat,
     }),
     placeholder: 'Password (repeat)',
   }),

@@ -4,7 +4,11 @@
   "description": "",
   "scripts": {
     "build": "npm run clear && parcel build ./static/*.html --no-source-maps --no-cache --public-url ./",
+<<<<<<< HEAD
     "start": "npm run clear && parcel build ./static/*.html --no-source-maps --no-cache --public-url ./ && node ./server.js",
+=======
+    "start": "npm run clear && parcel build ./static/*.html --no-source-maps --no-cache --public-url ./ && node ./src/server.js",
+>>>>>>> 4de4d5d8ebf05afe6507004a3b38a484ca42bac7
     "lint": "eslint --fix ./src",
     "clear": "rm -rf dist .parcel-cache",
     "style": "npx stylelint \"**/*.css\" --fix\"",

@@ -1,10 +1,10 @@
-import { validateInput } from './validateInput';
+import { isEmpty, valid } from './validateHelpers';
 
 export function handleSendMessage() {
   const messageInput = document.getElementsByName(
     'message',
   )[0] as HTMLInputElement;
-  if (!validateInput('message', messageInput.value)) {
+  if (valid(() => messageInput.value, isEmpty)) {
     console.log('empty message');
   }
 }
