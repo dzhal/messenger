@@ -1,0 +1,80 @@
+/* stylelint-disable keyframes-name-pattern */
+.input_group {
+  position: relative;
+  margin: 1rem 0;
+}
+label {
+  color: var(--color-text-secondary);
+  font-size: 0.813rem;
+  font-weight: normal;
+  position: absolute;
+  pointer-events: none;
+  left: 0.313rem;
+  top: 0.625rem;
+  transition: 0.2s ease all;
+}
+.input_error {
+  font-size: 0.613rem;
+  color: var(--color-error);
+  font-weight: 300;
+}
+.input_bar {
+  position: relative;
+  display: block;
+  width: 17.5rem;
+}
+.input_bar:before,
+.input_bar:after {
+  content: '';
+  height: 0.125rem;
+  width: 0;
+  bottom: 0.063rem;
+  position: absolute;
+  background: var(--color-primary);
+  transition: 0.2s ease all;
+}
+.input_bar:before {
+  left: 50%;
+}
+.input_bar:after {
+  right: 50%;
+}
+.input_highlight {
+  position: absolute;
+  height: 60%;
+  width: 6.25rem;
+  top: 25%;
+  left: 0;
+  pointer-events: none;
+  opacity: 0.5;
+}
+input:focus ~ .input_highlight {
+  animation: input-highlight 0.3s ease;
+}
+@keyframes input_highlight {
+  from {
+    background: var(--color-primary);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes input_highlight {
+  from {
+    background: var(--color-primary);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes input_highlight {
+  from {
+    background: var(--color-primary);
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}

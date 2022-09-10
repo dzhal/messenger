@@ -1,0 +1,13 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "color-hex-case": "lower",
+    "rule-empty-line-before": "never",
+    "at-rule-empty-line-before": "never",
+    "selector-class-pattern": null,
+    "string-quotes": "single",
+    "selector-pseudo-element-colon-notation": "single",
+    "value-keyword-case": "lower"
+  },
+  "ignoreFiles": ["dist/*"]
+}
