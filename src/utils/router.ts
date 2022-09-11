@@ -25,7 +25,7 @@ export default class Router {
     Router.__instance = this;
   }
 
-  use(pathname: string, block: () => Block): Router {
+  use(pathname: string, block: HTMLElement): Router {
     const route = new Route(pathname, block, { rootQuery: this._rootQuery });
 
     this.routes.push(route);

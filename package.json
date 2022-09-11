@@ -8,7 +8,7 @@
     "lint": "eslint --fix ./src",
     "clear": "rm -rf dist .parcel-cache",
     "style": "npx stylelint \"**/*.css\" --fix\"",
-    "dev": "npm run clear && parcel ./static/*.html  --port 3000"
+    "dev": "npm run clear && parcel index.html  --port 3000"
   },
   "repository": {
     "type": "git",

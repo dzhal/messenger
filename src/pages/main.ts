@@ -67,4 +67,4 @@ const fragment = new Main({
   chat: chatTemplate,
 });
 
-document.getElementById('root')?.append(fragment.getContent());
+export default fragment.getContent();

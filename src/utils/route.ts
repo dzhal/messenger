@@ -1,17 +1,17 @@
 import Block from './block';
 
 export default class Route {
-  _pathname: string;
+  private _pathname: string;
 
-  private _blockClass: typeof Block;
+  private _blockClass: HTMLElement;
 
-  _block: Block | null;
+  _block: HTMLElement | null;
 
   _props: Record<string, string>;
 
   constructor(
     pathname: string,
-    view: typeof Block,
+    view: HTMLElement,
     props: Record<string, string>,
   ) {
     this._pathname = pathname;
@@ -41,12 +41,12 @@ export default class Route {
 
   render(): void {
     if (!this._block) {
-      this._block = new this._blockClass();
+      this._block = this._blockClass;
       render(this._props.rootQuery, this._block);
       return;
     }
 
-    this._block.show();
+    // this._block.show();
   }
 }
 
@@ -54,8 +54,8 @@ function isEqual(lhs: string, rhs: string) {
   return lhs === rhs;
 }
 
-function render(query: string, block: Block) {
+function render(query: string, block: HTMLElement) {
   const root = document.querySelector(query);
-  root?.append(block.getWrapperElement());
+  root?.append(block);
   return root;
 }

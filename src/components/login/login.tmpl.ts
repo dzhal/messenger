@@ -11,7 +11,7 @@ export default `
       <div class="login_button-primary">
         {{{ buttonLogin }}}
       </div>
-      <div class="login_button-secondary" onclick="location.href='/register.html'">
+      <div class="login_button-secondary" onclick="location.href='/sign-up'">
         {{{ buttonRegister }}}
       </div>
     </div>

@@ -71,4 +71,4 @@ const fragment = new Profile({
   }),
 });
 
-document.getElementById('root')?.append(fragment.getContent());
+export default fragment.getContent();

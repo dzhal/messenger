@@ -22,10 +22,12 @@ export default `
       {{{ buttonQuit }}}
     </div>
   </div>
-  <div class="profile_backblock" onclick="location.href='/'">
-    <div class="profile_back">
-      {{{ imageBack }}}
-    </div> 
-  </div>
-  </div>
+  <a href="/messenger">
+    <div class="profile_backblock">
+      <div class="profile_back">
+        {{{ imageBack }}}
+      </div> 
+    </div>
+  </a>
+</div>
 `;

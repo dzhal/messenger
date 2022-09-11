@@ -80,5 +80,4 @@ const fragment = new Register({
   }),
 });
 
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-document.getElementById('root')?.append(fragment.getContent());
+export default fragment.getContent();

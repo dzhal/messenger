@@ -19,13 +19,13 @@ export default `
         Супер! Посмотрю позже
       </div>
       <div class="message user">
-        <a href="/404.html">Page 404</a>
+        <a href="/404">Page 404</a>
       </div>
       <div class="message user">
-        <a href="/500.html">Page 500</a>
+        <a href="/500">Page 500</a>
       </div>
       <div class="message user">
-        <a href="/login.html">Login page</a>
+        <a href="/">Login page</a>
       </div>
     </div>
     <div class="chat_inputarea">

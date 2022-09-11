@@ -4,7 +4,7 @@ import './chat-list.css';
 export default `
   <section class='chatList_container'>
     <div class="chatList_header">
-      <a href="/profile.html">Profile ></a>
+      <a href="/settings">Profile ></a>
     </div>
     {{{ search }}}
     {{{ chatShort1 }}}
