@@ -10,8 +10,18 @@ import Input from '../components/input';
 import Image from '../components/image';
 import Button from '../components/button';
 import { handleSendMessage } from '../utils/handleSendMessage';
+import Router from '../utils/router';
+
+const router = new Router('#root');
 
 const chatListTemplate = new ChatList({
+  button: new Button({
+    text: 'Profile >',
+    className: 'chatList_header',
+    events: {
+      click: () => router.go('/settings'),
+    },
+  }),
   search: new Search({}),
   chatShort1: new ChatShort({
     avatar: new Avatar({}),

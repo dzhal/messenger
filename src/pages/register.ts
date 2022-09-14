@@ -4,6 +4,9 @@ import Input from '../components/input';
 import { registrationSubmitHandler } from '../utils/submitHandlers';
 import LabeledInput from '../components/labeledinput';
 import { registerRules } from '../utils/validateRules';
+import Router from '../utils/router';
+
+const router = new Router('#root');
 
 const fragment = new Register({
   buttonRegister: new Button({
@@ -21,6 +24,9 @@ const fragment = new Register({
     type: 'button',
     className: 'button_secondary',
     text: 'Sign in',
+    events: {
+      click: () => router.go('/'),
+    },
   }),
   inputEmail: new LabeledInput({
     input: new Input({

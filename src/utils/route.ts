@@ -1,5 +1,3 @@
-import Block from './block';
-
 export default class Route {
   private _pathname: string;
 

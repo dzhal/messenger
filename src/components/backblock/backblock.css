@@ -1,0 +1,20 @@
+.profile_backblock {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 4rem;
+  background-color: var(--color-bg-secondary);
+  top: 0;
+  bottom: 0;
+}
+.profile_back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.563rem;
+  height: 1.563rem;
+  border-radius: 50%;
+  background: var(--color-primary);
+}

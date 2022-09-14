@@ -4,12 +4,22 @@ import back from '../assets/images/back.svg';
 import Avatar from '../components/avatar';
 import Button from '../components/button';
 import Image from '../components/image';
+import Router from '../utils/router';
+import Backblock from '../components/backblock';
+
+const router = new Router('#root');
 
 const fragment = new Profile({
-  imageBack: new Image({
-    src: back,
-    alt: 'back',
+  backblock: new Backblock({
+    imageBack: new Image({
+      src: back,
+      alt: 'back',
+    }),
+    events: {
+      click: () => router.go('/messenger'),
+    },
   }),
+
   avatar: new Avatar({}),
   name: 'Ivan',
   inputEmail: new Input({

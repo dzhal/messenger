@@ -1,6 +1,4 @@
 import Route from './route';
-import Block from './block';
-
 export default class Router {
   routes: Route[];
 
@@ -36,7 +34,7 @@ export default class Router {
   start(): void {
     window.onpopstate = ((event: PopStateEvent) => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      this._onRoute((event!.currentTarget! as Window).location.pathname);
+      this._onRoute((event.currentTarget as Window).location.pathname);
     }).bind(this);
 
     this._onRoute(window.location.pathname);

@@ -22,12 +22,6 @@ export default `
       {{{ buttonQuit }}}
     </div>
   </div>
-  <a href="/messenger">
-    <div class="profile_backblock">
-      <div class="profile_back">
-        {{{ imageBack }}}
-      </div> 
-    </div>
-  </a>
+  {{{ backblock }}}
 </div>
 `;

@@ -1,8 +1,8 @@
-import template from './500.tmpl';
 import Handlebars from 'handlebars';
 import Block from '../../utils/block';
+import template from './backblock.tmpl';
 
-export default class Page500 extends Block {
+export default class Backblock extends Block {
   render() {
     return this.compile(Handlebars.compile(template), this.props);
   }
