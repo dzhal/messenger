@@ -22,3 +22,15 @@ export type TMeta = {
 export type Validator = (value: string) => boolean;
 export type Predicate = Validator;
 export type Computed<T> = () => T;
+export type TUser = {
+  first_name: string;
+  second_name: string;
+  login: string;
+  email: string;
+  password: string;
+  phone: string;
+};
+export type TLogin = {
+  login: string;
+  password: string;
+};

@@ -1,3 +1,4 @@
+import { HOST } from '../constants/constant-api';
 enum METHODS {
   GET = 'GET',
   POST = 'POST',
@@ -21,6 +22,11 @@ type TOptions = {
 };
 
 export default class HTTPTransport {
+  private baseUrl = HOST;
+  path: string;
+  constructor(path: string) {
+    this.path = path;
+  }
   get = (url: string, options: TOptions = {}): Promise<unknown> => {
     return this.request(
       url,
@@ -68,8 +74,10 @@ export default class HTTPTransport {
       xhr.open(
         method,
         isGet && !!data
-          ? `${url}${queryStringify(<Record<string, string>>data)}`
-          : url,
+          ? `${this.baseUrl}${this.path}${url}${queryStringify(
+              <Record<string, string>>data,
+            )}`
+          : `${this.baseUrl}${this.path}${url}`,
       );
 
       Object.keys(headers).forEach((key) => {
