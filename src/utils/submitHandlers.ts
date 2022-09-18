@@ -1,3 +1,5 @@
+import AuthController from '../controllers/auth-controller';
+import { TLogin, TRegister } from './types';
 import { valid } from './validateHelpers';
 import { loginRules, registerRules } from './validateRules';
 
@@ -22,6 +24,7 @@ export function loginSubmitHandler() {
 
   if (validForm) {
     console.log(formData);
+    AuthController.signin(formData as TLogin);
   }
 }
 
@@ -46,5 +49,6 @@ export function registrationSubmitHandler() {
 
   if (validForm) {
     console.log(formData);
+    AuthController.signup(formData as TRegister);
   }
 }

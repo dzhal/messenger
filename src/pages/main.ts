@@ -10,9 +10,7 @@ import Input from '../components/input';
 import Image from '../components/image';
 import Button from '../components/button';
 import { handleSendMessage } from '../utils/handleSendMessage';
-import Router from '../utils/router';
-
-const router = new Router('#root');
+import router from '../utils/router';
 
 const chatListTemplate = new ChatList({
   button: new Button({

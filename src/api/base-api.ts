@@ -1,14 +1,17 @@
-export class BaseAPI {
-  create(_props?: any) {
-    throw new Error('Not implemented');
+import HTTPTransport from '../utils/custom-fetch';
+
+export default abstract class BaseAPI {
+  protected http: HTTPTransport;
+
+  protected constructor(endpoint: string) {
+    this.http = new HTTPTransport(endpoint);
   }
-  request(_props?: any) {
-    throw new Error('Not implemented');
-  }
-  update(_props?: any) {
-    throw new Error('Not implemented');
-  }
-  delete(_props?: any) {
-    throw new Error('Not implemented');
-  }
+
+  public abstract create?(data: unknown): Promise<unknown>;
+
+  public abstract read?(identifier?: string): Promise<unknown>;
+
+  public abstract update?(identifier: string, data: unknown): Promise<unknown>;
+
+  public abstract delete?(identifier: string): Promise<unknown>;
 }

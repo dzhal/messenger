@@ -4,9 +4,7 @@ import Input from '../components/input';
 import LabeledInput from '../components/labeledinput';
 import { loginSubmitHandler } from '../utils/submitHandlers';
 import { loginRules } from '../utils/validateRules';
-import Router from '../utils/router';
-
-const router = new Router('#root');
+import router from '../utils/router';
 
 const fragment = new Login({
   buttonLogin: new Button({

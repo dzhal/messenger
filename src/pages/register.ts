@@ -4,9 +4,7 @@ import Input from '../components/input';
 import { registrationSubmitHandler } from '../utils/submitHandlers';
 import LabeledInput from '../components/labeledinput';
 import { registerRules } from '../utils/validateRules';
-import Router from '../utils/router';
-
-const router = new Router('#root');
+import router from '../utils/router';
 
 const fragment = new Register({
   buttonRegister: new Button({

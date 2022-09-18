@@ -1,5 +1,5 @@
 import Route from './route';
-export default class Router {
+class Router {
   routes: Route[];
 
   history: History;
@@ -23,7 +23,7 @@ export default class Router {
     Router.__instance = this;
   }
 
-  use(pathname: string, block: HTMLElement): Router {
+  public use(pathname: string, block: HTMLElement): Router {
     const route = new Route(pathname, block, { rootQuery: this._rootQuery });
 
     this.routes.push(route);
@@ -31,7 +31,7 @@ export default class Router {
     return this;
   }
 
-  start(): void {
+  public start(): void {
     window.onpopstate = ((event: PopStateEvent) => {
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this._onRoute((event.currentTarget as Window).location.pathname);
@@ -40,10 +40,11 @@ export default class Router {
     this._onRoute(window.location.pathname);
   }
 
-  _onRoute(pathname: string): void {
+  private _onRoute(pathname: string): void {
     const route = this.getRoute(pathname);
 
     if (!route) {
+      this.go('/404');
       return;
     }
 
@@ -56,12 +57,12 @@ export default class Router {
     route.render();
   }
 
-  go(pathname: string): void {
+  public go(pathname: string): void {
     this.history.pushState({}, '', pathname);
     this._onRoute(pathname);
   }
 
-  back(): void {
+  public back(): void {
     this.history.back();
   }
 
@@ -73,3 +74,5 @@ export default class Router {
     return this.routes.find((route) => route.match(pathname));
   }
 }
+
+export default new Router('#root');

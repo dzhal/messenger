@@ -1,8 +1,6 @@
 import Page500 from '../components/500';
 import Button from '../components/button';
-import Router from '../utils/router';
-
-const router = new Router('#root');
+import router from '../utils/router';
 
 const fragment = new Page500({
   button: new Button({

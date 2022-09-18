@@ -1,38 +1,48 @@
-import { IEventBus } from './types';
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type Handler<A extends any[] = unknown[]> = (...args: A) => void;
+type MapInterface<P> = P[keyof P];
 
-export default class EventBus implements IEventBus {
+export default class EventBus<
+  E extends Record<string, string> = Record<string, string>,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private readonly listeners: Record<string, Array<(...args: any) => void>> =
-    {};
+  Args extends Record<MapInterface<E>, any[]> = Record<string, any[]>,
+> {
+  private readonly listeners: {
+    [K in MapInterface<E>]?: Handler<Args[K]>[];
+  } = {};
 
-  constructor() {
-    this.listeners = {};
-  }
-
-  on(event: string, callback: () => void) {
+  on<Event extends MapInterface<E>>(
+    event: Event,
+    callback: Handler<Args[Event]>,
+  ) {
     if (!this.listeners[event]) {
       this.listeners[event] = [];
     }
 
-    this.listeners[event].push(callback);
+    this.listeners[event]?.push(callback);
   }
 
-  off(event: string, callback: () => void) {
+  off<Event extends MapInterface<E>>(
+    event: Event,
+    callback: Handler<Args[Event]>,
+  ) {
     if (!this.listeners[event]) {
-      throw new Error(`There is no event: ${event}`);
+      throw new Error(`Нет события: ${event}`);
     }
 
-    this.listeners[event] = this.listeners[event].filter(
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    this.listeners[event] = this.listeners[event]!.filter(
       (listener) => listener !== callback,
     );
   }
 
-  emit(event: string, ...args: []): void {
+  emit<Event extends MapInterface<E>>(event: Event, ...args: Args[Event]) {
     if (!this.listeners[event]) {
-      throw new Error(`There is no event: ${event}`);
+      return;
     }
 
-    this.listeners[event].forEach(function (listener) {
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    this.listeners[event]!.forEach((listener) => {
       listener(...args);
     });
   }

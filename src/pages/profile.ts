@@ -4,10 +4,9 @@ import back from '../assets/images/back.svg';
 import Avatar from '../components/avatar';
 import Button from '../components/button';
 import Image from '../components/image';
-import Router from '../utils/router';
 import Backblock from '../components/backblock';
-
-const router = new Router('#root');
+import router from '../utils/router';
+import AuthController from '../controllers/auth-controller';
 
 const fragment = new Profile({
   backblock: new Backblock({
@@ -19,12 +18,10 @@ const fragment = new Profile({
       click: () => router.go('/messenger'),
     },
   }),
-
   avatar: new Avatar({}),
   name: 'Ivan',
   inputEmail: new Input({
     type: 'text',
-    name: 'email',
     placeholder: 'Email',
     disabled: 'disabled',
     value: 'ivan@gmail.com',
@@ -78,6 +75,12 @@ const fragment = new Profile({
     type: 'button',
     className: 'button_secondary',
     text: 'Quit',
+    events: {
+      click: () => {
+        AuthController.logout();
+        router.go('/');
+      },
+    },
   }),
 });
 

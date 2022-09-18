@@ -1,8 +1,6 @@
 import Page404 from '../components/404';
 import Button from '../components/button';
-import Router from '../utils/router';
-
-const router = new Router('#root');
+import router from '../utils/router';
 
 const fragment = new Page404({
   button: new Button({

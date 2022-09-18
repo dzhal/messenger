@@ -18,11 +18,36 @@ export type TMeta = {
   tagName: string;
   props: TProps;
 };
-
+export enum METHODS {
+  GET = 'GET',
+  POST = 'POST',
+  PUT = 'PUT',
+  DELETE = 'DELETE',
+  PATCH = 'PATCH',
+}
+export type TOptions = {
+  method: METHODS;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  data?: any;
+};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type Indexed<T = any> = {
+  [key in string]: T;
+};
 export type Validator = (value: string) => boolean;
 export type Predicate = Validator;
 export type Computed<T> = () => T;
 export type TUser = {
+  id: number;
+  first_name: string;
+  second_name: string;
+  login: string;
+  email: string;
+  password: string;
+  phone: string;
+  avatar: string;
+};
+export type TRegister = {
   first_name: string;
   second_name: string;
   login: string;
