@@ -8,7 +8,13 @@ enum StoreEvents {
 }
 
 export class Store extends EventBus {
-  private state: Indexed = {};
+  private state: Indexed = {
+    user: {
+      first_name: 'dzhal',
+      second_name: 'amninov',
+      login: 'login123',
+    },
+  };
 
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data);

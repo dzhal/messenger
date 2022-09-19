@@ -14,6 +14,17 @@ export default class Input extends Block {
       },
     });
   }
+  public enable() {
+    (this.element as HTMLInputElement).disabled = false;
+  }
+
+  public getName() {
+    return (this.element as HTMLInputElement).name;
+  }
+
+  public getValue() {
+    return (this.element as HTMLInputElement).value;
+  }
 
   public onBlur(rule: (str: string) => boolean) {
     const input = this.element as HTMLInputElement;

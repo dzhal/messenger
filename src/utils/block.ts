@@ -44,7 +44,7 @@ export default class Block implements IBlock {
   }
 
   private _registerEvents(eventBus: IEventBus): void {
-    eventBus.on(Block.EVENTS.INIT, this.init.bind(this));
+    eventBus.on(Block.EVENTS.INIT, this._init.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
     eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
     eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this));
@@ -105,22 +105,12 @@ export default class Block implements IBlock {
     return this._element;
   }
 
-  private _createResources(): void {
-    if (this.props.wrapperClass) {
-      this._element.classList.add(this.props.wrapperClass);
-    }
-    if (this.props.extraClass) {
-      this._element.classList.add(this.props.extraClass);
-    }
-    if (this.props.dataset) {
-      this._element.setAttribute('data-inputs', this.props.dataset);
-    }
-  }
+  private _init() {
+    this.init();
 
-  init(): void {
-    this._createResources();
-    this.eventBus().emit(Block.EVENTS.FLOW_CDM);
+    this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
+  init(): void {}
 
   private _componentDidMount(): void {
     this.componentDidMount();
