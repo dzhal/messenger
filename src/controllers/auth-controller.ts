@@ -1,5 +1,6 @@
 import API, { AuthAPI } from '../api/auth-api';
 import router from '../utils/router';
+import store from '../utils/store';
 import { TLogin, TRegister } from '../utils/types';
 
 export class AuthController {
@@ -19,15 +20,31 @@ export class AuthController {
   }
 
   async signup(data: TRegister) {
-    await this.api.signup(data);
+    try {
+      await this.api.signup(data);
+      await this.fetchUser();
+      router.go('/messenger');
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async fetchUser() {
-    await this.api.read();
+    try {
+      const user = await this.api.read();
+      store.set('user', user);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   async logout() {
-    await this.api.logout();
+    try {
+      await this.api.logout();
+      router.go('/');
+    } catch (e) {
+      console.log(e);
+    }
   }
 }
 
