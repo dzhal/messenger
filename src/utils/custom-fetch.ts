@@ -1,3 +1,4 @@
+import { HOST } from '../constants/constant-api';
 import { METHODS, TOptions } from './types';
 
 export function queryStringify(data: Record<string, string>) {
@@ -10,7 +11,7 @@ export function queryStringify(data: Record<string, string>) {
 }
 
 export default class HTTPTransport {
-  static API_URL = 'https://ya-praktikum.tech/api/v2';
+  static API_URL = HOST;
 
   protected endpoint: string;
 

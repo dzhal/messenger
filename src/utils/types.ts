@@ -5,6 +5,10 @@ export interface IEventBus {
   emit(event: string, ...args: any[]): void;
 }
 
+export type TStore = {
+  user?: Omit<TUser, 'password'> & { display_name: string | null };
+};
+
 export interface IBlock {
   props: TProps;
   getElementForEvent(): HTMLElement;
@@ -45,7 +49,7 @@ export type TUser = {
   email: string;
   password: string;
   phone: string;
-  avatar: string;
+  avatar: string | null;
 };
 export type TRegister = {
   first_name: string;

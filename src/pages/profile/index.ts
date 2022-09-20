@@ -11,7 +11,6 @@ import { withStore } from '../../utils/store';
 import template from './profile.tmpl';
 import back from '../../assets/images/back.svg';
 import LabeledInput from '../../components/labeledinput';
-import { loginRules } from '../../utils/validateRules';
 
 class ProfileBase extends Block {
   init() {
@@ -26,11 +25,14 @@ class ProfileBase extends Block {
         click: () => router.go('/messenger'),
       },
     });
-    this.children.inputEmail = new Input({
-      type: 'text',
+    this.children.inputEmail = new LabeledInput({
+      input: new Input({
+        type: 'text',
+        name: 'email',
+        disabled: 'disabled',
+        value: this.props.email,
+      }),
       placeholder: 'Email',
-      disabled: 'disabled',
-      value: 'ivan@gmail.com',
     });
     this.children.inputLogin = new LabeledInput({
       input: new Input({
@@ -38,37 +40,51 @@ class ProfileBase extends Block {
         name: 'login',
         disabled: 'disabled',
         value: this.props.login,
-        rules: loginRules.login,
       }),
       placeholder: 'Login',
     });
-    this.children.inputFirstName = new Input({
-      type: 'text',
-      name: 'first_name',
-      placeholder: 'Name',
-      disabled: 'disabled',
-      value: 'ivan',
+    this.children.inputFirstName = new LabeledInput({
+      input: new Input({
+        type: 'text',
+        name: 'login',
+        disabled: 'disabled',
+        value: this.props.first_name,
+      }),
+      placeholder: 'First name',
     });
-    this.children.inputSecondName = new Input({
-      type: 'text',
-      name: 'second_name',
-      placeholder: 'Surname',
-      disabled: 'disabled',
-      value: 'ivanov',
+    this.children.inputSecondName = new LabeledInput({
+      input: new Input({
+        type: 'text',
+        name: 'second_name',
+        disabled: 'disabled',
+        value: this.props.second_name,
+      }),
+      placeholder: 'Second name',
     });
-    this.children.inputPhone = new Input({
+    this.children.inputPhone = new LabeledInput({
+      input: new Input({
+        type: 'text',
+        name: 'phone',
+        disabled: 'disabled',
+        value: this.props.phone,
+      }),
+      placeholder: 'Phone',
+    });
+    new Input({
       type: 'text',
       name: 'phone',
       placeholder: 'Phone number',
       disabled: 'disabled',
       value: '+7 (909) 967 30 30',
     });
-    this.children.inputChatName = new Input({
-      type: 'text',
-      name: 'chat_name',
-      placeholder: 'Chatname',
-      disabled: 'disabled',
-      value: 'ivanishe',
+    this.children.inputChatName = new LabeledInput({
+      input: new Input({
+        type: 'text',
+        name: 'chat_name',
+        disabled: 'disabled',
+        value: this.props.chat_name || '',
+      }),
+      placeholder: 'Chat name',
     });
 
     this.children.buttonChangeData = new Button({

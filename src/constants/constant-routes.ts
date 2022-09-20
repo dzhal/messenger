@@ -1,8 +1,9 @@
 export const ROUTES = {
   login: '/',
-  register: '/signup',
+  register: '/sign-up',
   chat: '/messenger',
   profile: '/settings',
+  profileEdit: '/settings/edit',
   page500: '/500',
   page404: '/404',
 };

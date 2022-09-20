@@ -1,4 +1,5 @@
 import API, { AuthAPI } from '../api/auth-api';
+import { ROUTES } from '../constants/constant-routes';
 import router from '../utils/router';
 import store from '../utils/store';
 import { TLogin, TRegister } from '../utils/types';
@@ -13,7 +14,8 @@ export class AuthController {
   async signin(data: TLogin) {
     try {
       await this.api.signin(data);
-      router.go('/messenger');
+      router.go(ROUTES.profile);
+      await this.fetchUser();
     } catch (e) {
       console.log(e);
     }
@@ -23,25 +25,23 @@ export class AuthController {
     try {
       await this.api.signup(data);
       await this.fetchUser();
-      router.go('/messenger');
+      router.go(ROUTES.profile);
     } catch (e) {
       console.log(e);
     }
   }
 
   async fetchUser() {
-    try {
-      const user = await this.api.read();
-      store.set('user', user);
-    } catch (e) {
-      console.log(e);
-    }
+    const user = await this.api.read();
+    console.log(user);
+
+    store.set('user', user);
   }
 
   async logout() {
     try {
       await this.api.logout();
-      router.go('/');
+      router.go(ROUTES.login);
     } catch (e) {
       console.log(e);
     }

@@ -1,20 +1,14 @@
 import Block from './block';
 import EventBus from './event-bus';
 import { isEqual, set } from './helpers';
-import { Indexed, TProps } from './types';
+import { Indexed, TProps, TStore } from './types';
 
 enum StoreEvents {
   UPDATED = 'UPDATED',
 }
 
 export class Store extends EventBus {
-  private state: Indexed = {
-    user: {
-      first_name: 'dzhal',
-      second_name: 'amninov',
-      login: 'login123',
-    },
-  };
+  private state: TStore = {};
 
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data);
