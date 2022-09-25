@@ -14,7 +14,7 @@ export class AuthController {
   async signin(data: TLogin) {
     try {
       await this.api.signin(data);
-      router.go(ROUTES.profile);
+      router.go(ROUTES.chat);
       await this.fetchUser();
     } catch (e) {
       console.log(e);

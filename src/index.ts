@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     router.start();
 
     if (!isProtectedRoute) {
-      router.go(ROUTES.profile);
+      router.go(ROUTES.chat);
     }
   } catch {
     router.start();
