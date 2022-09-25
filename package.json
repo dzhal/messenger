@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "npm run clear && parcel build parcel index.html --no-source-maps --no-cache --public-url ./",
-    "start": "npm run clear && parcel build parcel index.html --no-source-maps --no-cache --public-url ./ && node ./src/server.js",
+    "build": "npm run clear && parcel build index.html --no-source-maps --no-cache --public-url ./",
+    "start": "npm run clear && parcel build index.html --no-source-maps --no-cache --public-url ./ && node ./src/server.js",
     "lint": "eslint --fix ./src",
     "clear": "rm -rf dist .parcel-cache",
     "style": "npx stylelint \"**/*.css\" --fix\"",
