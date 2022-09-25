@@ -1,4 +1,3 @@
-import { TUser, TLogin, TRegister } from '../utils/types';
 import BaseAPI from './base-api';
 
 type TUserData = {
