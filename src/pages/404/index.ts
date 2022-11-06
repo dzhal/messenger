@@ -16,6 +16,7 @@ export class Page404 extends Block {
       },
     });
   }
+
   render() {
     return this.compile(Handlebars.compile(template), this.props);
   }

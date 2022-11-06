@@ -6,4 +6,5 @@ export const ROUTES = {
   profileEdit: '/settings/edit',
   page500: '/500',
   page404: '/404',
+  changeAvatar: '/settings/change-avatar',
 };

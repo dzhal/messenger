@@ -17,7 +17,18 @@ export interface IBlock {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export type TProps = Record<string, any>;
-
+export type TUserData = {
+  first_name?: string;
+  second_name?: string;
+  display_name?: string;
+  login?: string;
+  email?: string;
+  phone?: string;
+};
+export type TChangePassData = {
+  oldPassword: string;
+  newPassword: string;
+};
 export type TMeta = {
   tagName: string;
   props: TProps;

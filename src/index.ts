@@ -8,15 +8,19 @@ import { ProfilePage } from './pages/profile/';
 import { ROUTES } from './constants/constant-routes';
 import { LoginPage } from './pages/login/index';
 import { RegisterPage } from './pages/register/index';
+import { EditProfilePage } from './pages/profile-edit';
+import { ChangeAvatarPage } from './pages/avatar-edit';
 
 document.addEventListener('DOMContentLoaded', async () => {
   router
     .use(ROUTES.login, LoginPage)
     .use(ROUTES.register, RegisterPage)
     .use(ROUTES.profile, ProfilePage)
+    .use(ROUTES.profileEdit, EditProfilePage)
     .use(ROUTES.page500, Page500)
     .use(ROUTES.page404, Page404)
-    .use(ROUTES.chat, Main);
+    .use(ROUTES.chat, Main)
+    .use(ROUTES.changeAvatar, ChangeAvatarPage);
 
   let isProtectedRoute = true;
 

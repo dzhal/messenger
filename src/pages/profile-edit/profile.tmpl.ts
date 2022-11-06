@@ -17,9 +17,8 @@ export default `
       {{{ inputPhone }}}
     </div>
     <div class="profile_buttons">
-      {{{ buttonChangeData }}}
-      {{{ buttonPassword }}}
-      {{{ buttonQuit }}}
+      {{{ buttonSave }}}
+      {{{ buttonCancel }}}
     </div>
   </div>
   {{{ backblock }}}

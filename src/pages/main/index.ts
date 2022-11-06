@@ -73,6 +73,7 @@ export class Main extends Block {
       }),
     });
   }
+
   render() {
     return this.compile(Handlebars.compile(template), this.props);
   }

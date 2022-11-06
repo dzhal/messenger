@@ -14,6 +14,7 @@ export default class Input extends Block {
       },
     });
   }
+
   public enable() {
     (this.element as HTMLInputElement).disabled = false;
   }

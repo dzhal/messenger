@@ -36,6 +36,7 @@ export class AuthController {
     console.log(user);
 
     store.set('user', user);
+    console.log(store);
   }
 
   async logout() {
