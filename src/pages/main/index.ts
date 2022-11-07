@@ -6,7 +6,6 @@ import Button from '../../components/button';
 import Image from '../../components/image';
 import router from '../../utils/router';
 import Search from '../../components/search';
-import ChatShort from '../../components/chat-short';
 import Avatar from '../../components/avatar';
 import Chat from '../../components/chat';
 import Input from '../../components/input';
