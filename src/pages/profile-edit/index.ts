@@ -18,6 +18,7 @@ import { editProfileRules } from '../../utils/validateRules';
 class EditProfileBase extends Block {
   init() {
     this.children.avatar = new Avatar({
+      avatar: this.props.avatar,
       events: {
         click: () => router.go(ROUTES.changeAvatar),
       },
@@ -94,15 +95,13 @@ class EditProfileBase extends Block {
       events: {
         click: () => {
           const profileData = {} as TUserData;
-          Object.values(this.children)
-            .filter((child) => child instanceof LabeledInput)
-            .forEach((child) => {
-              const key = child.children.input.props.name;
-              const value = child.children.input.props.value;
-              profileData[key as keyof TUserData] = value;
-            });
+          const inputs = document.querySelectorAll('input');
+
+          inputs.forEach((input) => {
+            profileData[input.name as keyof TUserData] = input.value;
+          });
+
           UserController.edit(profileData);
-          router.go(ROUTES.profile);
         },
       },
     });

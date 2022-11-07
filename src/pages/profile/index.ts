@@ -7,7 +7,7 @@ import Input from '../../components/input';
 import AuthController from '../../controllers/auth-controller';
 import Block from '../../utils/block';
 import router from '../../utils/router';
-import { withStore } from '../../utils/store';
+import store, { withStore } from '../../utils/store';
 import template from './profile.tmpl';
 import back from '../../assets/images/back.svg';
 import LabeledInput from '../../components/labeledinput';
@@ -15,7 +15,11 @@ import { ROUTES } from '../../constants/constant-routes';
 
 class ProfileBase extends Block {
   init() {
-    this.children.avatar = new Avatar({});
+    console.log(this.props);
+    console.log(store);
+    this.children.avatar = new Avatar({
+      avatar: this.props.avatar,
+    });
 
     this.children.backblock = new Backblock({
       imageBack: new Image({
@@ -81,11 +85,11 @@ class ProfileBase extends Block {
     this.children.inputChatName = new LabeledInput({
       input: new Input({
         type: 'text',
-        name: 'chat_name',
+        name: 'display_name',
         disabled: 'disabled',
-        value: this.props.chat_name || '',
+        value: this.props.display_name || '',
       }),
-      placeholder: 'Chat name',
+      placeholder: 'Display name',
     });
 
     this.children.buttonChangeData = new Button({
@@ -94,7 +98,7 @@ class ProfileBase extends Block {
       text: 'Change data',
       events: {
         click: () => {
-          this.editProfile();
+          router.go(ROUTES.profileEdit);
         },
       },
     });
@@ -102,6 +106,11 @@ class ProfileBase extends Block {
       type: 'button',
       className: 'button_secondary',
       text: 'Change password',
+      events: {
+        click: () => {
+          router.go(ROUTES.changePassword);
+        },
+      },
     });
     this.children.buttonQuit = new Button({
       type: 'button',
@@ -114,20 +123,6 @@ class ProfileBase extends Block {
         },
       },
     });
-  }
-
-  // editProfile() {
-  //   // console.log(this.children);
-  //   Object.values(this.children)
-  //     .filter((child) => child instanceof LabeledInput)
-  //     .map((child) => {
-  //       console.log(child);
-  //       (child.children.input as Input).enable();
-  //     });
-  // }
-
-  editProfile() {
-    router.go(ROUTES.profileEdit);
   }
 
   render() {

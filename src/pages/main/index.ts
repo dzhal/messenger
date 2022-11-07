@@ -13,39 +13,34 @@ import Input from '../../components/input';
 import { handleSendMessage } from '../../utils/handleSendMessage';
 import clip from '../../assets/images/clip.svg';
 import send from '../../assets/images/send.svg';
+import ChatController from '../../controllers/chat-controller';
+import { ROUTES } from '../../constants/constant-routes';
 
 export class Main extends Block {
   init(): void {
+    const chats = ChatController.getChats();
+
+    console.log(chats);
+
     this.children.chatList = new ChatList({
       button: new Button({
         text: 'Profile >',
         className: 'chatList_header',
         events: {
-          click: () => router.go('/settings'),
+          click: () => router.go(ROUTES.profile),
         },
       }),
       search: new Search({}),
-      chatShort1: new ChatShort({
-        avatar: new Avatar({}),
-        name: 'Vitalya',
-        text: 'hello',
-        time: '11:00',
-        count: '1',
-      }),
-      chatShort2: new ChatShort({
-        avatar: new Avatar({}),
-        name: 'Andrew',
-        text: 'Picture',
-        time: '10:49',
-        count: '2',
-      }),
-      chatShort3: new ChatShort({
-        avatar: new Avatar({}),
-        name: 'Ivan',
-        text: 'kak dela?',
-        time: '12:00',
-        count: '10',
-      }),
+      chats: [
+        {
+          avatar: null,
+          created_by: 90269,
+          id: 1452,
+          last_message: null,
+          title: '123',
+          unread_count: 0,
+        },
+      ],
     });
     this.children.chat = new Chat({
       avatar: new Avatar({}),

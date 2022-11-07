@@ -5,8 +5,12 @@ export default `
   <section class='chatList_container'>
     {{{ button }}}
     {{{ search }}}
-    {{{ chatShort1 }}}
-    {{{ chatShort2 }}}
-    {{{ chatShort3 }}} 
+    {{#if chats}}
+      {{#each chats}}
+        {{{ chatShort name=title }}}
+      {{/each}}
+    {{else}}
+      <div>Cоздать новый чат!</div>
+    {{/if}}
   </section>  
 `;

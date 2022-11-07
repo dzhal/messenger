@@ -10,6 +10,7 @@ import { LoginPage } from './pages/login/index';
 import { RegisterPage } from './pages/register/index';
 import { EditProfilePage } from './pages/profile-edit';
 import { ChangeAvatarPage } from './pages/avatar-edit';
+import { ChangePasswordPage } from './pages/password-edit';
 
 document.addEventListener('DOMContentLoaded', async () => {
   router
@@ -20,7 +21,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     .use(ROUTES.page500, Page500)
     .use(ROUTES.page404, Page404)
     .use(ROUTES.chat, Main)
-    .use(ROUTES.changeAvatar, ChangeAvatarPage);
+    .use(ROUTES.changeAvatar, ChangeAvatarPage)
+    .use(ROUTES.changePassword, ChangePasswordPage);
 
   let isProtectedRoute = true;
 

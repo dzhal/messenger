@@ -1,9 +1,10 @@
 // language=hbs
-import './avatar-edit.css';
+import './password-edit.css';
 
 export default `
-    <form class="avatar_form">
-      <input type="file" id="avatar" name="avatar" multiple>
+    <form class="password_form">
+      {{{ oldPassword }}}
+      {{{ newPassword }}}
       <div class="profile_buttons">
         {{{ buttonSave }}}
         {{{ buttonCancel }}}

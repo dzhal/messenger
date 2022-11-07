@@ -7,4 +7,5 @@ export const ROUTES = {
   page500: '/500',
   page404: '/404',
   changeAvatar: '/settings/change-avatar',
+  changePassword: '/settings/change-password',
 };

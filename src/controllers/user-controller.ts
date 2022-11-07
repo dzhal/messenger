@@ -14,8 +14,8 @@ export class UserController {
   async edit(data: TUserData) {
     try {
       await this.api.edit(data);
-      router.go(ROUTES.chat);
       await AuthController.fetchUser();
+      await router.go(ROUTES.profile);
     } catch (e) {
       console.log(e);
     }
@@ -24,6 +24,7 @@ export class UserController {
   async changePassword(data: TChangePassData) {
     try {
       await this.api.changePassword(data);
+      await router.go(ROUTES.profileEdit);
     } catch (e) {
       console.log(e);
     }
@@ -32,6 +33,8 @@ export class UserController {
   async changeAvatar(data: FormData) {
     try {
       await this.api.changeAvatar(data);
+      await AuthController.fetchUser();
+      await router.go(ROUTES.profile);
     } catch (e) {
       console.log(e);
     }
@@ -47,7 +50,8 @@ export class UserController {
 
   async searchUser(login: string) {
     try {
-      await this.api.searchUser(login);
+      const user = await this.api.searchUser(login);
+      return user;
     } catch (e) {
       console.log(e);
     }
