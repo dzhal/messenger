@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars';
-import Block from '../../utils/block';
+import Block from '../../core/block';
 import template from './backblock.tmpl';
 
 export default class Backblock extends Block {

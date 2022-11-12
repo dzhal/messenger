@@ -1,7 +1,7 @@
 import API, { AuthAPI } from '../api/auth-api';
 import { ROUTES } from '../constants/constant-routes';
-import router from '../utils/router';
-import store from '../utils/store';
+import router from '../core/router';
+import store from '../core/store';
 import { TLogin, TRegister } from '../utils/types';
 
 export class AuthController {

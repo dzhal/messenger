@@ -1,8 +1,8 @@
 import template from './500.tmpl';
 import Handlebars from 'handlebars';
-import Block from '../../utils/block';
+import Block from '../../core/block';
 import Button from '../../components/button';
-import router from '../../utils/router';
+import router from '../../core/router';
 import { ROUTES } from '../../constants/constant-routes';
 
 export class Page500 extends Block {

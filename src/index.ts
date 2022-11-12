@@ -2,7 +2,7 @@
 import { Main } from './pages/main/index';
 import { Page404 } from './pages/404/index';
 import { Page500 } from './pages/500/index';
-import router from './utils/router';
+import router from './core/router';
 import AuthController from './controllers/auth-controller';
 import { ProfilePage } from './pages/profile/';
 import { ROUTES } from './constants/constant-routes';

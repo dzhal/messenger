@@ -1,7 +1,7 @@
 import Block from './block';
 import EventBus from './event-bus';
-import { isEqual, set } from './helpers';
-import { Indexed, TProps, TStore } from './types';
+import { isEqual, set } from '../utils/helpers';
+import { Indexed, TProps, TStore } from '../utils/types';
 
 enum StoreEvents {
   UPDATED = 'UPDATED',

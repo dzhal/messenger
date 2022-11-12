@@ -1,5 +1,5 @@
 import API, { ChatAPI } from '../api/chat-api';
-import store from '../utils/store';
+import store from '../core/store';
 import { TChat, TCreateChat } from '../utils/types';
 
 export class ChatController {

@@ -1,5 +1,5 @@
 import EventBus from './event-bus';
-import { IBlock, IEventBus, TProps } from './types';
+import { IBlock, IEventBus, TProps } from '../utils/types';
 import { nanoid } from 'nanoid';
 import { TemplateDelegate } from 'handlebars';
 
@@ -110,6 +110,7 @@ export default class Block implements IBlock {
 
     this.eventBus().emit(Block.EVENTS.FLOW_RENDER);
   }
+
   init(): void {}
 
   private _componentDidMount(): void {

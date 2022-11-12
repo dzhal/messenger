@@ -1,8 +1,8 @@
 import Handlebars from 'handlebars';
 import Button from '../../components/button';
-import Block from '../../utils/block';
-import router from '../../utils/router';
-import { withStore } from '../../utils/store';
+import Block from '../../core/block';
+import router from '../../core/router';
+import { withStore } from '../../core/store';
 import template from './avatar-edit.tmpl';
 import { ROUTES } from '../../constants/constant-routes';
 import UserController from '../../controllers/user-controller';

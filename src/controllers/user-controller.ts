@@ -1,6 +1,6 @@
 import API, { UserAPI } from '../api/user-api';
 import { ROUTES } from '../constants/constant-routes';
-import router from '../utils/router';
+import router from '../core/router';
 import { TChangePassData, TUserData } from '../utils/types';
 import AuthController from './auth-controller';
 

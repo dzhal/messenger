@@ -1,9 +1,9 @@
 import template from './login.tmpl';
 import Handlebars from 'handlebars';
-import Block from '../../utils/block';
+import Block from '../../core/block';
 import Button from '../../components/button';
 import { loginSubmitHandler } from '../../utils/submitHandlers';
-import router from '../../utils/router';
+import router from '../../core/router';
 import LabeledInput from '../../components/labeledinput';
 import Input from '../../components/input';
 import { loginRules } from '../../utils/validateRules';

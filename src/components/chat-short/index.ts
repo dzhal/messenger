@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars';
-import Block from '../../utils/block';
+import Block from '../../core/block';
 import template from './chat-short.tmpl';
 
 export default class ChatShort extends Block {

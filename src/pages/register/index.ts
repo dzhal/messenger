@@ -1,10 +1,10 @@
 import template from './register.tmpl';
 import Handlebars from 'handlebars';
-import Block from '../../utils/block';
+import Block from '../../core/block';
 import LabeledInput from '../../components/labeledinput';
 import Input from '../../components/input';
 import { registerRules } from '../../utils/validateRules';
-import router from '../../utils/router';
+import router from '../../core/router';
 import Button from '../../components/button';
 import { registrationSubmitHandler } from '../../utils/submitHandlers';
 

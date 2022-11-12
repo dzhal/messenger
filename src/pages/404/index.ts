@@ -1,7 +1,7 @@
 import template from './404.tmpl';
 import Handlebars from 'handlebars';
-import Block from '../../utils/block';
-import router from '../../utils/router';
+import Block from '../../core/block';
+import router from '../../core/router';
 import { ROUTES } from '../../constants/constant-routes';
 import Button from '../../components/button';
 

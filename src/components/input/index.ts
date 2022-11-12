@@ -1,6 +1,6 @@
 import template from './input.tmpl';
 import Handlebars from 'handlebars';
-import Block from '../../utils/block';
+import Block from '../../core/block';
 import { TProps } from '../../utils/types';
 import { valid } from '../../utils/validateHelpers';
 
