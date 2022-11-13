@@ -1,5 +1,5 @@
 // import Login from './components/login';
-import { Main } from './pages/main/index';
+import { MainPage } from './pages/main/index';
 import { Page404 } from './pages/404/index';
 import { Page500 } from './pages/500/index';
 import router from './core/router';
@@ -11,6 +11,7 @@ import { RegisterPage } from './pages/register/index';
 import { EditProfilePage } from './pages/profile-edit';
 import { ChangeAvatarPage } from './pages/avatar-edit';
 import { ChangePasswordPage } from './pages/password-edit';
+import ChatController from './controllers/chat-controller';
 
 document.addEventListener('DOMContentLoaded', async () => {
   router
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     .use(ROUTES.profileEdit, EditProfilePage)
     .use(ROUTES.page500, Page500)
     .use(ROUTES.page404, Page404)
-    .use(ROUTES.chat, Main)
+    .use(ROUTES.chat, MainPage)
     .use(ROUTES.changeAvatar, ChangeAvatarPage)
     .use(ROUTES.changePassword, ChangePasswordPage);
 
@@ -35,7 +36,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   try {
     await AuthController.fetchUser();
-
+    await ChatController.getChats();
     router.start();
 
     if (!isProtectedRoute) {

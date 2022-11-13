@@ -17,7 +17,7 @@ export default class Block implements IBlock {
 
   public id = nanoid(6);
 
-  public children: Record<string, Block>;
+  public children: Record<string, Block | Block[]>;
 
   private eventBus: () => IEventBus;
 
@@ -55,9 +55,20 @@ export default class Block implements IBlock {
     childrenAndProps: Record<string, Block | any>,
   ) {
     const props: TProps = {};
-    const children: Record<string, Block> = {};
+    const children: Record<string, Block | Block[]> = {};
 
     Object.entries(childrenAndProps).forEach(([key, value]) => {
+      if (Array.isArray(value)) {
+        const valuesChild = [] as Block[];
+        value.forEach((item) => {
+          if (item instanceof Block) {
+            valuesChild.push(item);
+          } else {
+            props[key] = item;
+          }
+        });
+        children[key] = valuesChild;
+      }
       if (value instanceof Block) {
         children[key] = value;
       } else {
@@ -68,19 +79,36 @@ export default class Block implements IBlock {
     return { props, children };
   }
 
-  protected compile(
-    template: TemplateDelegate,
-    context: Record<string, string>,
-  ) {
+  protected compile(template: TemplateDelegate, context: Record<string, any>) {
     const contextAndStubs = { ...context };
 
     Object.entries(this.children).forEach(([name, component]) => {
+      if (Array.isArray(component)) {
+        contextAndStubs[name] = component.map(
+          (child) => `<div data-id="${child.id}"></div>`,
+        );
+
+        return;
+      }
       contextAndStubs[name] = `<div data-id="${component.id}"></div>`;
     });
     const html = template(contextAndStubs);
     const temp = document.createElement('template');
     temp.innerHTML = html;
     Object.entries(this.children).forEach(([, component]) => {
+      if (Array.isArray(component)) {
+        component.forEach((child) => {
+          const stub = temp.content.querySelector(`[data-id="${child.id}"]`);
+          if (!stub) {
+            return;
+          }
+          child.getContent()?.append(...Array.from(stub.childNodes));
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+          stub.replaceWith(child.getContent()!);
+        });
+        return;
+      }
+
       const stub = temp.content.querySelector(`[data-id="${component.id}"]`);
       if (!stub) {
         return;

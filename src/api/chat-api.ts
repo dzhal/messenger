@@ -1,4 +1,4 @@
-import { TCreateChat } from '../utils/types';
+import { TChat, TCreateChat, TDeleteChat } from '../utils/types';
 import BaseAPI from './base-api';
 
 export class ChatAPI extends BaseAPI {
@@ -10,13 +10,17 @@ export class ChatAPI extends BaseAPI {
     return this.http.get('/');
   }
 
-  createChat(data: TCreateChat) {
+  createChat(data: TCreateChat): Promise<TChat> {
     return this.http.post('/', data);
   }
 
-  // addUserToChat(data: TUsersToChat) {
-  //   return this.http.put('/users', data);
-  // }
+  deleteChat(data: TDeleteChat) {
+    return this.http.delete('/', data);
+  }
+
+  getChatUsers(id: number) {
+    return this.http.post(`/token/${id}`);
+  }
 
   read = undefined;
 

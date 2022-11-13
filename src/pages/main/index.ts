@@ -12,14 +12,31 @@ import Input from '../../components/input';
 import { handleSendMessage } from '../../utils/handleSendMessage';
 import clip from '../../assets/images/clip.svg';
 import send from '../../assets/images/send.svg';
-import ChatController from '../../controllers/chat-controller';
 import { ROUTES } from '../../constants/constant-routes';
+import ChatShort from '../../components/chat-short';
+import store, { withStore } from '../../core/store';
+import ChatMenu from '../../components/chat-menu';
+import LabeledInput from '../../components/labeledinput';
+import ChatController from '../../controllers/chat-controller';
 
 export class Main extends Block {
   init(): void {
-    const chats = ChatController.getChats();
+    console.log('chat props', this.props);
+    console.log('chat state', store);
+    const chats = store.getState().chats?.map(
+      (chat) =>
+        new ChatShort({
+          name: chat.title,
+          count: chat.unread_count,
+          time: chat.last_message?.time,
+          id: chat.id,
+          createdBy: chat.created_by,
+          avatar: chat.avatar,
+        }),
+    );
 
-    console.log(chats);
+    const messages = undefined;
+    // const messages = store.getState().messages;
 
     this.children.chatList = new ChatList({
       button: new Button({
@@ -30,25 +47,45 @@ export class Main extends Block {
         },
       }),
       search: new Search({}),
-      chats: [
-        {
-          avatar: null,
-          created_by: 90269,
-          id: 1452,
-          last_message: null,
-          title: '123',
-          unread_count: 0,
+      chats: chats,
+      inputChatName: new LabeledInput({
+        input: new Input({
+          type: 'text',
+          name: 'addChat',
+        }),
+        placeholder: 'Enter chat name',
+      }),
+      buttonAddChat: new Button({
+        type: 'button',
+        className: 'button_primary',
+        text: 'Add chat',
+        events: {
+          click: () => {
+            const chatName = (
+              document.querySelector(
+                'input[name ="addChat"',
+              )! as HTMLInputElement
+            ).value;
+            ChatController.createChat({ title: chatName });
+            (
+              document.querySelector(
+                'input[name ="addChat"',
+              )! as HTMLInputElement
+            ).value = '';
+          },
         },
-      ],
+      }),
     });
     this.children.chat = new Chat({
       avatar: new Avatar({}),
-      chatName: 'Вадим',
+      chatName: 'bulba',
       imageClip: new Image({
         src: clip,
         alt: 'clip',
       }),
+      chatMenu: new ChatMenu({}),
       send: send,
+      messages: messages,
       input: new Input({
         type: 'text',
         name: 'message',
@@ -72,3 +109,10 @@ export class Main extends Block {
     return this.compile(Handlebars.compile(template), this.props);
   }
 }
+
+const withState = withStore((state) => ({
+  chats: [...state.chats],
+  currentChat: { ...state.currentChat },
+}));
+
+export const MainPage = withState(Main);

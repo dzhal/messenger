@@ -21,9 +21,25 @@ export type TCreateChat = {
   title: string;
 };
 
+export type TDeleteChat = {
+  chatId: number;
+};
+export type TMessage = {
+  chat_id: number;
+  content: string;
+  file: null | unknown;
+  id: number;
+  is_read: boolean;
+  time: string;
+  type: string;
+  user_id: number;
+};
 export type TStore = {
   user?: Omit<TUser, 'password'> & { display_name: string | null };
   chats?: TChat[];
+  currentChat?: number | undefined;
+  token?: string;
+  messages?: TMessage[];
 };
 
 export interface IBlock {
