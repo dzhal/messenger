@@ -39,6 +39,7 @@ export default class ChatMenu extends Block {
       text: 'Remove chat',
       events: {
         click: () => {
+          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           ChatController.deleteChat({ chatId: store.getState().currentChat! });
         },
       },

@@ -23,11 +23,8 @@ export default class HTTPTransport {
     return this.request<Response>(this.endpoint + path);
   }
 
-  public post<Response = void>(
-    path: string,
-    data?: unknown,
-  ): Promise<Response> {
-    return this.request<Response>(this.endpoint + path, {
+  public post(path: string, data?: unknown): Promise<any> {
+    return this.request<XMLHttpRequest>(this.endpoint + path, {
       method: METHODS.POST,
       data,
     });

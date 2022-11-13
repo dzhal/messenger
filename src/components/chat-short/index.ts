@@ -1,5 +1,6 @@
 import Handlebars from 'handlebars';
 import ChatController from '../../controllers/chat-controller';
+import messagesController from '../../controllers/messages-controller';
 import Block from '../../core/block';
 import store from '../../core/store';
 import { TProps } from '../../utils/types';
@@ -15,9 +16,10 @@ export default class ChatShort extends Block {
     });
   }
 
-  public clickChat() {
+  public async clickChat() {
     ChatController.getChatUsers(this.props.id);
     store.set('currentChat', this.props.id);
+    await messagesController.connect(this.props.id);
   }
 
   render() {

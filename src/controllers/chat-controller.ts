@@ -25,6 +25,7 @@ export class ChatController {
       const token = await this.api.getChatUsers(id);
       store.set('token', token);
       console.log(store);
+      return token;
     } catch (e) {
       console.log(e);
     }
@@ -32,9 +33,7 @@ export class ChatController {
 
   async createChat(data: TCreateChat) {
     try {
-      const chat = await this.api.createChat(data);
-      const chats = store.getState().chats;
-      chats?.push(chat);
+      this.getChats();
     } catch (e) {
       console.log(e);
     }

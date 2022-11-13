@@ -7,11 +7,11 @@ export class AuthAPI extends BaseAPI {
   }
 
   signup(data: TRegister) {
-    return this.http.post('/signup', { ...data });
+    return this.http.post('/signup', data);
   }
 
   signin(data: TLogin) {
-    return this.http.post('/signin', { ...data });
+    return this.http.post('/signin', data);
   }
 
   read(): Promise<TUser> {

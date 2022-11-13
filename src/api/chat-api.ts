@@ -10,7 +10,7 @@ export class ChatAPI extends BaseAPI {
     return this.http.get('/');
   }
 
-  createChat(data: TCreateChat): Promise<TChat> {
+  createChat(data: TCreateChat) {
     return this.http.post('/', data);
   }
 
@@ -18,8 +18,8 @@ export class ChatAPI extends BaseAPI {
     return this.http.delete('/', data);
   }
 
-  getChatUsers(id: number) {
-    return this.http.post(`/token/${id}`);
+  getChatUsers(id: number): Promise<any> {
+    return this.http.post(`/token/${id}`).then((response) => response.token);
   }
 
   read = undefined;
