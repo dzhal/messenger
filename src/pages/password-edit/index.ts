@@ -18,10 +18,10 @@ class ChangePasswordBase extends Block {
           e.preventDefault();
           const form = e.target as HTMLFormElement;
           const oldPassword = (
-            form.querySelector('input[name ="oldPassword"')! as HTMLInputElement
+            form.querySelector('input[name ="oldPassword"') as HTMLInputElement
           ).value;
           const newPassword = (
-            form.querySelector('input[name ="newPassword"')! as HTMLInputElement
+            form.querySelector('input[name ="newPassword"') as HTMLInputElement
           ).value;
           UserController.changePassword({ oldPassword, newPassword });
         },

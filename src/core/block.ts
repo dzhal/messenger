@@ -79,6 +79,7 @@ export default class Block implements IBlock {
     return { props, children };
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   protected compile(template: TemplateDelegate, context: Record<string, any>) {
     const contextAndStubs = { ...context };
 

@@ -1,5 +1,4 @@
 import API, { ChatAPI } from '../api/chat-api';
-import Chat from '../components/chat';
 import store from '../core/store';
 import { TChat, TCreateChat, TDeleteChat } from '../utils/types';
 
@@ -33,7 +32,8 @@ export class ChatController {
 
   async createChat(data: TCreateChat) {
     try {
-      this.getChats();
+      await this.api.createChat(data);
+      await this.getChats();
     } catch (e) {
       console.log(e);
     }
@@ -46,9 +46,9 @@ export class ChatController {
       const chats = store
         .getState()
         .chats?.filter((item) => item.id !== data.chatId);
-      await store.set('token', '');
-      await store.set('currentChat', null);
-      await store.set('chats', chats);
+      store.set('token', '');
+      store.set('currentChat', null);
+      store.set('chats', chats);
       console.log('store after', store.getState());
     } catch (e) {
       console.log(e);

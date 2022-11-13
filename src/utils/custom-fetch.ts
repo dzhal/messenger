@@ -23,6 +23,7 @@ export default class HTTPTransport {
     return this.request<Response>(this.endpoint + path);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public post(path: string, data?: unknown): Promise<any> {
     return this.request<XMLHttpRequest>(this.endpoint + path, {
       method: METHODS.POST,

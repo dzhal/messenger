@@ -82,11 +82,12 @@ class MessagesController {
     }
   }
 
-  private _closeHandler(event?: any) {
+  private _closeHandler() {
     this._removeListeners();
     clearInterval(this._pingIntervalFunc);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async _messageHandler(event: any) {
     const serverMessages: TMessage = JSON.parse(event.data);
     console.log(serverMessages);
@@ -94,16 +95,10 @@ class MessagesController {
     if (serverMessages.type !== 'pong') {
       if (Array.isArray(serverMessages)) {
         store.set('messages', serverMessages.reverse());
-        console.log(store);
       } else {
         const stateMessages = store.getState()?.messages as TMessage[];
         stateMessages?.push(serverMessages);
-
-        // const chatsUpdated = await ChatController.getChats();
-
         store.set('messages', stateMessages);
-        // store.set('chats', chatsUpdated);
-        console.log(store);
       }
     }
   }

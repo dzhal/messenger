@@ -34,9 +34,7 @@ export class Main extends Block {
           avatar: chat.avatar,
         }),
     );
-
-    const messages = undefined;
-    // const messages = store.getState().messages;
+    const messages = store.getState().messages;
 
     this.children.chatList = new ChatList({
       button: new Button({
@@ -64,13 +62,13 @@ export class Main extends Block {
             const chatName = (
               document.querySelector(
                 'input[name ="addChat"',
-              )! as HTMLInputElement
+              ) as HTMLInputElement
             ).value;
             ChatController.createChat({ title: chatName });
             (
               document.querySelector(
                 'input[name ="addChat"',
-              )! as HTMLInputElement
+              ) as HTMLInputElement
             ).value = '';
           },
         },
