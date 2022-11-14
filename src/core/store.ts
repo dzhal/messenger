@@ -8,7 +8,9 @@ enum StoreEvents {
 }
 
 export class Store extends EventBus {
-  private state: TStore = {};
+  private state: TStore = {
+    chats: [],
+  };
 
   public set(keypath: string, data: unknown) {
     set(this.state, keypath, data);

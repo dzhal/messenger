@@ -20,7 +20,13 @@ export type TChat = {
 export type TCreateChat = {
   title: string;
 };
-
+export type TSearchLogin = {
+  login: string;
+};
+export type TAddUsersToChat = {
+  users: number[];
+  chatId: number;
+};
 export type TDeleteChat = {
   chatId: number;
 };

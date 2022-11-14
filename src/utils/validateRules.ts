@@ -31,6 +31,9 @@ export const loginRules: Record<string, Validator> = {
     isContainDigit,
   ),
 };
+export const chatNameRules: Record<string, Validator> = {
+  addChat: and(minLength(2), maxLength(20)),
+};
 export const editProfileRules: Record<string, Validator> = {
   email: isEmailPattern,
   login: and(

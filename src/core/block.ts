@@ -157,8 +157,10 @@ export default class Block implements IBlock {
     this._render();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public componentDidUpdate(oldProps: TProps, newProps: TProps): boolean {
+    if (oldProps !== newProps) {
+      return true;
+    }
     return true;
   }
 
@@ -176,7 +178,14 @@ export default class Block implements IBlock {
 
   private _render() {
     const fragment = this.render();
-    this._element = fragment.firstElementChild as HTMLElement;
+    const newElement = fragment.firstElementChild;
+
+    if (this._element) {
+      this._element.replaceWith(newElement as HTMLElement);
+    }
+
+    this._element = newElement as HTMLElement;
+
     this._addEvents();
   }
 

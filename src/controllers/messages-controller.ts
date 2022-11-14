@@ -22,7 +22,7 @@ class MessagesController {
     this._chatId = chatId;
     this._token = await ChatAPI.getChatUsers(chatId);
     console.log(
-      'URL',
+      'OPEN WS',
       `${WEBSOCKET_CHATS}/${this._userId}/${this._chatId}/${this._token}`,
     );
     this._socket = await new WebSocket(
@@ -63,6 +63,10 @@ class MessagesController {
       clearInterval(this._pingIntervalFunc);
       this._socket.close();
       this._removeListeners();
+      console.log(
+        'CLOSE WS',
+        `${WEBSOCKET_CHATS}/${this._userId}/${this._chatId}/${this._token}`,
+      );
     }
   }
 

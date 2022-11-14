@@ -1,4 +1,4 @@
-import { TChangePassData, TUserData } from '../utils/types';
+import { TChangePassData, TSearchLogin, TUserData } from '../utils/types';
 import BaseAPI from './base-api';
 
 export class UserAPI extends BaseAPI {
@@ -22,8 +22,8 @@ export class UserAPI extends BaseAPI {
     return this.http.get(`/${id}`);
   }
 
-  searchUser(login: string) {
-    return this.http.post('/search', login);
+  searchUser(data: TSearchLogin) {
+    return this.http.post('/search', data);
   }
 
   read = undefined;

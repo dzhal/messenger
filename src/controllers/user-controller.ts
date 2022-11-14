@@ -1,7 +1,7 @@
 import API, { UserAPI } from '../api/user-api';
 import { ROUTES } from '../constants/constant-routes';
 import router from '../core/router';
-import { TChangePassData, TUserData } from '../utils/types';
+import { TChangePassData, TSearchLogin, TUserData } from '../utils/types';
 import AuthController from './auth-controller';
 
 export class UserController {
@@ -48,9 +48,9 @@ export class UserController {
     }
   }
 
-  async searchUser(login: string) {
+  async searchUser(data: TSearchLogin) {
     try {
-      const user = await this.api.searchUser(login);
+      const user = await this.api.searchUser(data);
       return user;
     } catch (e) {
       console.log(e);

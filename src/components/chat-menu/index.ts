@@ -17,6 +17,7 @@ export default class ChatMenu extends Block {
   }
 
   init(): void {
+    // this.children.searchUserForm = new
     this.children.addUserButton = new Button({
       type: 'button',
       className: 'button_secondary',
@@ -38,9 +39,12 @@ export default class ChatMenu extends Block {
       className: 'button_secondary',
       text: 'Remove chat',
       events: {
-        click: () => {
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-          ChatController.deleteChat({ chatId: store.getState().currentChat! });
+        click: async () => {
+          const currentChat = store.getState().currentChat;
+          if (currentChat)
+            await ChatController.deleteChat({
+              chatId: currentChat,
+            });
         },
       },
     });

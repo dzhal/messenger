@@ -18,11 +18,14 @@ import store, { withStore } from '../../core/store';
 import ChatMenu from '../../components/chat-menu';
 import LabeledInput from '../../components/labeledinput';
 import ChatController from '../../controllers/chat-controller';
+import { chatNameRules, loginRules } from '../../utils/validateRules';
+import Message from '../../components/message';
+import SearchUserForm from '../../components/search-user-form';
+import UserController from '../../controllers/user-controller';
+import { TUser } from '../../utils/types';
 
 export class Main extends Block {
   init(): void {
-    console.log('chat props', this.props);
-    console.log('chat state', store);
     const chats = store.getState().chats?.map(
       (chat) =>
         new ChatShort({
@@ -34,7 +37,19 @@ export class Main extends Block {
           avatar: chat.avatar,
         }),
     );
-    const messages = store.getState().messages;
+
+    const currentChatId = this.props.currentChat;
+    const currentChat = store
+      .getState()
+      .chats?.find((chat) => chat.id === currentChatId);
+
+    const messages = store.getState().messages?.map(
+      (message) =>
+        new Message({
+          self: message.user_id === store.getState().user?.id ? 'user' : '',
+          text: message.content,
+        }),
+    );
 
     this.children.chatList = new ChatList({
       button: new Button({
@@ -50,6 +65,7 @@ export class Main extends Block {
         input: new Input({
           type: 'text',
           name: 'addChat',
+          rules: chatNameRules.addChat,
         }),
         placeholder: 'Enter chat name',
       }),
@@ -61,13 +77,13 @@ export class Main extends Block {
           click: () => {
             const chatName = (
               document.querySelector(
-                'input[name ="addChat"',
+                'input[name ="addChat"]',
               ) as HTMLInputElement
             ).value;
             ChatController.createChat({ title: chatName });
             (
               document.querySelector(
-                'input[name ="addChat"',
+                'input[name ="addChat"]',
               ) as HTMLInputElement
             ).value = '';
           },
@@ -76,13 +92,67 @@ export class Main extends Block {
     });
     this.children.chat = new Chat({
       avatar: new Avatar({}),
-      chatName: 'bulba',
+      chatName: currentChat?.title,
       imageClip: new Image({
         src: clip,
         alt: 'clip',
       }),
       chatMenu: new ChatMenu({}),
+      searchUserForm: new SearchUserForm({
+        title: 'Add or remove user',
+        inputUserName: new LabeledInput({
+          input: new Input({
+            type: 'text',
+            name: 'search_login',
+            rules: loginRules.login,
+          }),
+          placeholder: 'Enter login',
+        }),
+        buttonAdd: new Button({
+          type: 'button',
+          className: 'button_primary',
+          text: 'Add user',
+          events: {
+            click: async () => {
+              const input = document.querySelector(
+                'input[name ="search_login"]',
+              ) as HTMLInputElement;
+              const users: TUser[] = await UserController.searchUser({
+                login: input.value,
+              });
+              if (users) {
+                await ChatController.addUsersToChat({
+                  users: users.map((user) => user.id),
+                  chatId: currentChatId,
+                });
+              }
+            },
+          },
+        }),
+        buttonRemove: new Button({
+          type: 'button',
+          className: 'button_primary',
+          text: 'Remove user',
+          events: {
+            click: async () => {
+              const input = document.querySelector(
+                'input[name ="search_login"]',
+              ) as HTMLInputElement;
+              const users: TUser[] = await UserController.searchUser({
+                login: input.value,
+              });
+              if (users) {
+                await ChatController.deleteUsersFromChat({
+                  users: users.map((user) => user.id),
+                  chatId: currentChatId,
+                });
+              }
+            },
+          },
+        }),
+      }),
       send: send,
+      currentChat: currentChatId,
       messages: messages,
       input: new Input({
         type: 'text',
@@ -104,13 +174,15 @@ export class Main extends Block {
   }
 
   render() {
+    this.init();
     return this.compile(Handlebars.compile(template), this.props);
   }
 }
 
 const withState = withStore((state) => ({
-  chats: [...state.chats],
-  currentChat: { ...state.currentChat },
+  chats: [...state.chats] ?? null,
+  currentChat: state.currentChat,
+  messages: state.messages ? [...state.messages] : null,
 }));
 
 export const MainPage = withState(Main);

@@ -1,6 +1,11 @@
 import API, { ChatAPI } from '../api/chat-api';
 import store from '../core/store';
-import { TChat, TCreateChat, TDeleteChat } from '../utils/types';
+import {
+  TAddUsersToChat,
+  TChat,
+  TCreateChat,
+  TDeleteChat,
+} from '../utils/types';
 
 export class ChatController {
   private readonly api: ChatAPI;
@@ -23,7 +28,6 @@ export class ChatController {
     try {
       const token = await this.api.getChatUsers(id);
       store.set('token', token);
-      console.log(store);
       return token;
     } catch (e) {
       console.log(e);
@@ -41,15 +45,26 @@ export class ChatController {
 
   async deleteChat(data: TDeleteChat) {
     try {
-      console.log('store before', store.getState());
       await this.api.deleteChat(data);
-      const chats = store
-        .getState()
-        .chats?.filter((item) => item.id !== data.chatId);
+      await this.getChats();
       store.set('token', '');
       store.set('currentChat', null);
-      store.set('chats', chats);
-      console.log('store after', store.getState());
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async addUsersToChat(data: TAddUsersToChat) {
+    try {
+      await this.api.addUsersToChat(data);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
+  async deleteUsersFromChat(data: TAddUsersToChat) {
+    try {
+      await this.api.deleteUsersFromChat(data);
     } catch (e) {
       console.log(e);
     }

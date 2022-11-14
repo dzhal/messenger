@@ -1,4 +1,4 @@
-import { TCreateChat, TDeleteChat } from '../utils/types';
+import { TAddUsersToChat, TCreateChat, TDeleteChat } from '../utils/types';
 import BaseAPI from './base-api';
 
 export class ChatAPI extends BaseAPI {
@@ -21,6 +21,14 @@ export class ChatAPI extends BaseAPI {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getChatUsers(id: number): Promise<any> {
     return this.http.post(`/token/${id}`).then((response) => response.token);
+  }
+
+  addUsersToChat(data: TAddUsersToChat) {
+    return this.http.put('/users', data);
+  }
+
+  deleteUsersFromChat(data: TAddUsersToChat) {
+    return this.http.delete('/users', data);
   }
 
   read = undefined;

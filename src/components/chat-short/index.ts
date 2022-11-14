@@ -17,8 +17,9 @@ export default class ChatShort extends Block {
   }
 
   public async clickChat() {
-    ChatController.getChatUsers(this.props.id);
+    await ChatController.getChatUsers(this.props.id);
     store.set('currentChat', this.props.id);
+    store.set('messages', null);
     await messagesController.connect(this.props.id);
   }
 
