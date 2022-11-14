@@ -1,5 +1,5 @@
 import Handlebars from 'handlebars';
-import Block from '../../utils/block';
+import Block from '../../core/block';
 import template from './chat-list.tmpl';
 
 export default class ChatList extends Block {
