@@ -39,4 +39,9 @@
     height: 1.25rem;
     border-radius: 50%;
   }
+  &:hover {
+    border: 0.063rem solid var(--color-primary);
+    border-radius: 1.25rem;
+    cursor: pointer;
+  }
 }

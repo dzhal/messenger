@@ -1,14 +1,18 @@
 // language=hbs
 import './chat-list.css';
+import '../chat-short/chat-short.css';
 
 export default `
   <section class='chatList_container'>
-    <div class="chatList_header">
-      <a href="/profile.html">Profile ></a>
-    </div>
+    {{{ button }}}
     {{{ search }}}
-    {{{ chatShort1 }}}
-    {{{ chatShort2 }}}
-    {{{ chatShort3 }}} 
+    <form class="add_chat">
+      {{{ inputChatName }}}
+      {{{ buttonAddChat }}}
+    </form>
+    {{#each chats}}
+      {{{ this }}}
+    {{/each}}
+
   </section>  
 `;

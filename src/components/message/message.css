@@ -1,0 +1,15 @@
+.message {
+  max-width: 70%;
+  padding: 0.625rem;
+  margin: 0.313rem 0.625rem;
+  font-weight: 500;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--color-text-common);
+  background: var(--color-bg-secondary);
+  border-radius: 0.75rem;
+  &.user {
+    align-self: end;
+    background-color: var(--color-bg-message);
+  }
+}
