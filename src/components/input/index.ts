@@ -1,6 +1,6 @@
 import template from './input.tmpl';
 import Handlebars from 'handlebars';
-import Block from '../../utils/block';
+import Block from '../../core/block';
 import { TProps } from '../../utils/types';
 import { valid } from '../../utils/validateHelpers';
 
@@ -13,6 +13,18 @@ export default class Input extends Block {
         focus: () => this.onFocus(),
       },
     });
+  }
+
+  public enable() {
+    (this.element as HTMLInputElement).disabled = false;
+  }
+
+  public getName() {
+    return (this.element as HTMLInputElement).name;
+  }
+
+  public getValue() {
+    return (this.element as HTMLInputElement).value;
   }
 
   public onBlur(rule: (str: string) => boolean) {
