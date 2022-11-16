@@ -7,7 +7,7 @@
     "build": "webpack --mode=production --node-env=production",
     "build:dev": "webpack --mode=development",
     "lint": "eslint --fix ./src",
-    "style": "npx stylelint \"**/*.css\" --fix\"",
+    "style": "npx stylelint \"**/*.css\" --fix",
     "test": "mocha --require ignore-styles",
     "serve": "webpack serve",
     "prepare": "husky install",

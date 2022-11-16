@@ -11,5 +11,5 @@
 5. `npm run lint` - launch ESlint
 6. `npm run style` - launch Stylint
 7. `npm run test` - launch unit tests
-8. added precommit with Husky
+8. added precommit with Husky, you need to [enable](https://stackoverflow.com/questions/8598639/why-is-my-git-pre-commit-hook-not-executable-by-default)
 9. added Docker config
