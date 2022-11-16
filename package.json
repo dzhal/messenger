@@ -10,12 +10,9 @@
     "lint": "eslint --fix ./src",
     "style": "npx stylelint \"**/*.css\" --fix\"",
     "test": "./node_modules/.bin/mocha",
-    "serve": "webpack serve"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm-run-all test lint style"
-    }
+    "serve": "webpack serve",
+    "prepare": "husky install",
+    "precommit": "npm run test && npm run lint && npm run style"
   },
   "repository": {
     "type": "git",
@@ -43,7 +40,7 @@
     "eslint-plugin-import": "2.26.0",
     "handlebars": "4.7.7",
     "html-webpack-plugin": "^5.5.0",
-    "husky": "8.0.2",
+    "husky": "^8.0.0",
     "mocha": "10.0.0",
     "nanoid": "3.3.3",
     "postcss": "^8.4.16",
