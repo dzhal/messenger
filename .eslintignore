@@ -3,4 +3,4 @@
 **/*.min.js
 server.js
 webpack.config.js
-mochaSetup.js
+mocha-config.js

@@ -1,29 +1,27 @@
-import proxyquire from 'proxyquire';
+import Block from './block';
 import { expect } from 'chai';
-import sinon from 'sinon';
-import type BlockType from './block';
+import Handlebars from 'handlebars';
 
-const eventBusMock = {
-  on: sinon.fake(),
-  emit: sinon.fake(),
-};
+describe('Testing class Block', () => {
+  class TestBlock extends Block {
+    render() {
+      return this.compile(
+        Handlebars.compile('<div>some text</div>'),
+        this.props,
+      );
+    }
+  }
 
-const { default: Block } = proxyquire('./block', {
-  './event-bus': {
-    EventBus: class {
-      emit = eventBusMock.emit;
+  const testClass = new TestBlock({});
 
-      on = eventBusMock.on;
-    },
-  },
-}) as { default: typeof BlockType };
+  it('Create typical Block', () => {
+    expect(testClass.getContent().textContent).to.eq('some text');
+  });
 
-describe('Block', () => {
-  class ComponentMock extends Block {}
-
-  it('should fire init event on initialization', () => {
-    new ComponentMock({});
-
-    expect(eventBusMock.emit.calledWith('init')).to.eq(true);
+  it('Can update props', () => {
+    testClass.setProps({
+      id: 123,
+    });
+    expect(testClass.props.id).to.eq(123);
   });
 });

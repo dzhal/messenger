@@ -8,7 +8,7 @@
     "build:dev": "webpack --mode=development",
     "lint": "eslint --fix ./src",
     "style": "npx stylelint \"**/*.css\" --fix\"",
-    "test": "./node_modules/.bin/mocha",
+    "test": "mocha --require ignore-styles",
     "serve": "webpack serve",
     "prepare": "husky install",
     "precommit": "npm run test && npm run lint && npm run style"
@@ -40,6 +40,7 @@
     "handlebars": "4.7.7",
     "html-webpack-plugin": "^5.5.0",
     "husky": "^8.0.0",
+    "ignore-styles": "^5.0.1",
     "mocha": "10.0.0",
     "nanoid": "3.3.3",
     "postcss": "^8.4.16",
