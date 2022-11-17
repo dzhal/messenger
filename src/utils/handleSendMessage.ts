@@ -7,11 +7,10 @@ export async function handleSendMessage() {
   )[0] as HTMLInputElement;
   if (valid(() => messageInput.value, isEmpty)) {
     console.log('empty message');
+    return;
   }
   const response = await messagesController.sendMessage(messageInput.value);
-  console.log(response);
   if (response) {
-    console.log(response);
     messageInput.value = '';
   }
 }
