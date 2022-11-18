@@ -1,7 +1,7 @@
 import { Computed, Predicate, Validator } from './types';
 
 export const valid = <T>(value: Computed<T>, validator: Validator): boolean =>
-  validator(value() as string);
+  validator(value() as unknown as string);
 
 export const isLoginPattern = (str: string): boolean =>
   /^[a-zA-Z0-9-_]+$/.test(str);
@@ -27,7 +27,7 @@ export const maxLength =
 
 export const isInt = (str: string): boolean => !isNaN(parseInt(str, 10));
 export const isWhiteSpace = (str: string): boolean => str === ' ';
-export const isEmpty = (str: string): boolean => str === '';
+export const isEmpty = (str: string): boolean => /^$|\s+/.test(str);
 export const has =
   (fn: Validator): Validator =>
   (value: string) =>

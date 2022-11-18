@@ -21,10 +21,6 @@ class MessagesController {
     this._userId = store.getState().user!.id;
     this._chatId = chatId;
     this._token = await ChatAPI.getChatUsers(chatId);
-    console.log(
-      'OPEN WS',
-      `${WEBSOCKET_CHATS}/${this._userId}/${this._chatId}/${this._token}`,
-    );
     this._socket = await new WebSocket(
       `${WEBSOCKET_CHATS}/${this._userId}/${this._chatId}/${this._token}`,
     );
@@ -93,8 +89,14 @@ class MessagesController {
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async _messageHandler(event: any) {
-    const serverMessages: TMessage = JSON.parse(event.data);
-    console.log(serverMessages);
+    const serverMessages: TMessage = (function () {
+      try {
+        return JSON.parse(event.data);
+      } catch (e) {
+        console.log(e);
+        return null;
+      }
+    })();
 
     if (serverMessages.type !== 'pong') {
       if (Array.isArray(serverMessages)) {

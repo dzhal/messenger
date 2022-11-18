@@ -34,7 +34,9 @@ export class Main extends Block {
           time: chat.last_message?.time,
           id: chat.id,
           createdBy: chat.created_by,
-          avatar: chat.avatar,
+          avatar: new Avatar({
+            avatar: chat.avatar,
+          }),
         }),
     );
 
@@ -91,7 +93,9 @@ export class Main extends Block {
       }),
     });
     this.children.chat = new Chat({
-      avatar: new Avatar({}),
+      avatar: new Avatar({
+        avatar: currentChat?.avatar,
+      }),
       chatName: currentChat?.title,
       imageClip: new Image({
         src: clip,
@@ -159,6 +163,7 @@ export class Main extends Block {
         name: 'message',
         className: 'chat_input',
         placeholder: 'Enter message',
+        required: true,
       }),
       button: new Button({
         className: 'chat_send',

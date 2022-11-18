@@ -2,3 +2,5 @@
 /node_modules
 **/*.min.js
 server.js
+webpack.config.js
+mocha-config.js
